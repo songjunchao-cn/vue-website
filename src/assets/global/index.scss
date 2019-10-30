@@ -1,0 +1,192 @@
+@charset "utf-8";
+@import './color.scss';
+
+@import './blogdoll.scss'; //Blog暂用样式
+$color_black:#111111;
+$font_name: "erikos","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+$big_size:18px;
+$radius:18px;
+@mixin mainBox {
+  width: calc(100% - 120px);
+  margin: 0 auto;
+  position: relative;
+}
+@mixin box {
+  box-sizing: border-box;
+}
+
+@mixin after ($both) {
+  content: '';
+  display: block;
+  @if $both == both{
+    clear: both;
+  }
+}
+@mixin center ($width, $height){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -$width/2;
+  margin-top: -$height/2;
+}
+
+html{
+  font-size: 18px;
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: $font_name;
+}
+.black-white {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+.hue-rotate {
+    -webkit-filter: hue-rotate(180deg);
+    filter: hue-rotate(180deg);
+}
+.negative {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+// #root{
+//   height: 100%; 
+// }
+.app-center{
+  @include mainBox();
+}
+#app{
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  background-color: $main_bg;
+  font-family: $font_name;
+  overflow: hidden;
+  header{
+    width: 100%;
+    background-color: #fff;
+    border-bottom: $b_border;
+    height: 36px;
+    nav{
+      &::after{
+        @include after(both)
+      }
+    }
+    .times{
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      a{
+        display: block;
+        padding: 7px 10px;
+        float: left;
+      }
+      time{
+        float: left;
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 38px;
+      }
+    }
+    // .mobile-logo{
+    //   position: relative;
+    //   img{
+    //     display: block;
+    //     position: absolute;
+    //     top: 9px;
+    //     left: 0;
+    //   }
+    //   span{
+    //     font-size: 1rem;
+    //     font-weight: bold;
+    //     line-height: 38px;
+    //     padding-left: 32px;
+
+    //   }
+    // }
+    // .mobile-menu{
+    //   display: block;
+    //   position: absolute;
+    //   z-index:999;
+    //   top: 8px;
+    //   right: 0;
+    //   width: 22px;
+    //   height: 22px;
+    //   &.mobile-menu-active{
+    //     div:nth-child(1){
+    //       transform: translate(0,6px) rotate(45deg);
+    //     }
+    //     div:nth-child(2){
+    //       transform: translate(-3px,0);
+    //       opacity: 0;
+    //     }
+    //     div:nth-child(3){
+    //       transform: translate(0,-6px) rotate(-45deg);
+    //     }
+    //   }
+    //   div{
+    //     background: #111;
+    //     width: 100%;
+    //     height: 2px;
+    //     margin: 4px 0 0;
+    //     transition: all .15s cubic-bezier(0,.3,.8,1) 0s;
+    //   }
+    // }
+    // .mobile-nav{
+    //   visibility: hidden;
+    //   position: fixed;
+    //   background-color: $color_main;
+    //   top: 0;
+    //   left: 0;
+    //   z-index: 900;
+    //   width: 100vw;
+    //   height: 100vh;
+    //   padding-top: 14vh;
+    //   opacity: 0;
+    //   transition: opacity .25s cubic-bezier(0,.3,.8,1) 0s;
+    //   a{
+    //     display: block;
+    //     line-height: 2.6;
+    //     text-align: center;
+    //     font-size: 1.8rem;
+    //     text-decoration: underline;
+    //     transform: translate(0, 8px);
+    //     opacity: 0;
+    //   }
+    //   a:nth-child(1){
+    //     transition: all .25s cubic-bezier(0,.3,.8,1) 0s;
+    //   }
+    //   a:nth-child(2){
+    //     transition: all .25s cubic-bezier(0,.3,.8,1) .07s;
+    //   }
+    //   a:nth-child(3){
+    //     transition: all .25s cubic-bezier(0,.3,.8,1) .15s;
+    //   }
+    //   a:nth-child(4){
+    //     transition: all .25s cubic-bezier(0,.3,.8,1) .23s;
+    //   }
+    //   &.mobile-in-active{
+    //     visibility: visible;
+    //     opacity: 1;
+    //     a{
+    //       transform: translate(0,0);
+    //       opacity: 1;
+    //     }
+    //   }
+    //   &.mobile-live-active{
+    //     visibility: visible;
+    //     opacity: 0;
+    //     a{
+    //       transform: translate(0,8px);
+    //       opacity: 0;
+    //     } 
+    //   }
+    // }
+  }
+}
