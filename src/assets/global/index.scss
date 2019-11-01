@@ -60,12 +60,14 @@ body {
   @include mainBox();
 }
 #app{
-  width: 100vw;
-  height: 100%;
-  position: relative;
-  background-color: $main_bg;
-  font-family: $font_name;
-  overflow: hidden;
+  .root{
+    width: 100vw;
+    height: 100%;
+    position: relative;
+    background-color: $main_bg;
+    font-family: $font_name;
+    overflow: hidden;
+  }
   header{
     width: 100%;
     background-color: #fff;
@@ -74,6 +76,10 @@ body {
     nav{
       &::after{
         @include after(both)
+      }
+      span{
+        vertical-align: middle;
+        padding-right: 12px;
       }
     }
     .times{
@@ -94,6 +100,45 @@ body {
         line-height: 38px;
       }
     }
+    .nav span~a{
+      // display: block;
+      // float: left;
+      font-weight: bolder;
+      color: $color_black;
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+      padding: 0 10px;
+      cursor: pointer;
+      line-height: 36px;
+      font-size: 1rem;
+      &::after{
+        @include after(t);
+        @include center(28px, 28px);
+        @include box();
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border:3px solid $color_main;
+        background-color: #fff;
+        z-index: -1;
+        transform: scale(0);
+        transition:transform 0.15s cubic-bezier(.18,1.29,.89,1.24);
+      }
+      &:hover{
+        color: #111111;
+        text-decoration: none;
+        &::after{
+          transform: scale(1)
+        }
+      }
+    }
+    .nav a.nav-index::after{
+      background-color: $color_main;
+      transition: none;
+      transform: scale(1);
+      animation: indexs 0.15s ease-out forwards;
+    }    
     // .mobile-logo{
     //   position: relative;
     //   img{

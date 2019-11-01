@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="root">
     <Header/>
     <div class="container-fluid">
       <router-view></router-view>
@@ -12,7 +12,7 @@
 import Header from '@/components/header/Header'
 
 export default {
-  name: 'home',
+  name: 'root',
   components: {
     Header
   }
