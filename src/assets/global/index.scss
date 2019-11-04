@@ -3,14 +3,23 @@
 
 @import './blogdoll.scss'; //Blog暂用样式
 $color_black:#111111;
-$font_name: "erikos","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+$font_name: "erikos",
+"Helvetica Neue",
+Helvetica,
+Arial,
+"Hiragino Sans GB",
+"Hiragino Sans GB W3",
+"WenQuanYi Micro Hei",
+sans-serif;
 $big_size:18px;
 $radius:18px;
+
 @mixin mainBox {
   width: calc(100% - 120px);
   margin: 0 auto;
   position: relative;
 }
+
 @mixin box {
   box-sizing: border-box;
 }
@@ -18,11 +27,13 @@ $radius:18px;
 @mixin after ($both) {
   content: '';
   display: block;
-  @if $both == both{
+
+  @if $both==both {
     clear: both;
   }
 }
-@mixin center ($width, $height){
+
+@mixin center ($width, $height) {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -30,10 +41,11 @@ $radius:18px;
   margin-top: -$height/2;
 }
 
-html{
+html {
   font-size: 18px;
   height: 100%;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -41,27 +53,33 @@ body {
   overflow: hidden;
   font-family: $font_name;
 }
+
 .black-white {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
 }
+
 .hue-rotate {
-    -webkit-filter: hue-rotate(180deg);
-    filter: hue-rotate(180deg);
+  -webkit-filter: hue-rotate(180deg);
+  filter: hue-rotate(180deg);
 }
+
 .negative {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
 }
+
 // #root{
 //   height: 100%; 
 // }
-.app-center{
+.app-center {
   @include mainBox();
 }
-#app{
+
+#app {
   height: 100%;
-  .root{
+
+  .root {
     width: 100vw;
     height: 100%;
     position: relative;
@@ -69,31 +87,37 @@ body {
     font-family: $font_name;
     overflow: hidden;
   }
-  header{
+
+  header {
     width: 100%;
     background-color: #fff;
     border-bottom: $b_border;
     height: 36px;
-    nav{
-      &::after{
+
+    nav {
+      &::after {
         @include after(both)
       }
-      span{
+
+      span {
         vertical-align: middle;
         padding-right: 12px;
       }
     }
-    .times{
+
+    .times {
       position: absolute;
       top: 0;
       right: 0;
       height: 100%;
-      a{
+
+      a {
         display: block;
         padding: 7px 10px;
         float: left;
       }
-      time{
+
+      time {
         float: left;
         display: block;
         font-size: 16px;
@@ -101,7 +125,8 @@ body {
         line-height: 38px;
       }
     }
-    .nav span~a{
+
+    .nav span~a {
       // display: block;
       // float: left;
       font-weight: bolder;
@@ -113,33 +138,38 @@ body {
       cursor: pointer;
       line-height: 36px;
       font-size: 1rem;
-      &::after{
+
+      &::after {
         @include after(t);
         @include center(28px, 28px);
         @include box();
         width: 28px;
         height: 28px;
         border-radius: 50%;
-        border:3px solid $color_main;
+        border: 3px solid $color_main;
         background-color: #fff;
         z-index: -1;
         transform: scale(0);
-        transition:transform 0.15s cubic-bezier(.18,1.29,.89,1.24);
+        transition: transform 0.15s cubic-bezier(.18, 1.29, .89, 1.24);
       }
-      &:hover{
+
+      &:hover {
         color: #111111;
         text-decoration: none;
-        &::after{
+
+        &::after {
           transform: scale(1)
         }
       }
     }
-    .nav a.nav-index::after{
+
+    .nav a.nav-index::after {
       background-color: $color_main;
       transition: none;
       transform: scale(1);
       animation: indexs 0.15s ease-out forwards;
-    }    
+    }
+
     // .mobile-logo{
     //   position: relative;
     //   img{
@@ -235,10 +265,167 @@ body {
     //   }
     // }
   }
-  .home{
+
+  .home {
     height: calc(100% - 36px);
-    .app-center{
+
+    .app-center {
       height: 100%;
+    }
+  }
+
+  /*icon*/
+  .figure-flex {
+    flex: 0 1 auto;
+
+    figure {
+      margin: 12px;
+      max-width: 64px;
+      cursor: pointer;
+
+      &:hover {
+        img {
+          animation: figure-animate 0.4s ease-in-out;
+        }
+
+        figcaption {
+          text-shadow: 2px 3px 1px #252b45;
+          transform: translateY(-1px)
+        }
+      }
+
+      img {
+        margin: 0 auto;
+        display: block;
+      }
+
+      figcaption {
+        text-align: center;
+        color: #fff;
+        font-size: 1rem;
+        margin-top: 4px;
+        font-family: $font;
+        transition: transform ease-out 0.3s
+      }
+    }
+  }
+
+  .figure-pop-about {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    &>p {
+      background-color: #fff;
+      line-height: 40px;
+      border-bottom: $b_border;
+      text-align: center;
+      position: relative;
+      font-size: 16px;
+      border-radius: $radius $radius 0 0;
+    }
+  }
+
+  .figure-pop {
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    box-sizing: border-box;
+
+    &>p {
+      background-color: #fff;
+      line-height: 40px;
+      border-bottom: $b_border;
+      text-align: center;
+      position: relative;
+      font-size: 1.2rem;
+      cursor: move;
+      border-radius: $radius $radius 0 0;
+
+      &>a {
+        display: block;
+        position: absolute;
+        top: 8px;
+        left: 12px;
+        width: 25px;
+        height: 25px;
+        background-color: #f95f56;
+        border-radius: 50%;
+        transform: rotate(45deg);
+
+        &::before,
+        &::after {
+          @include after(t);
+          position: absolute;
+          background-color: #fff
+        }
+
+        &::before {
+          width: 17px;
+          height: 1px;
+          left: 4px;
+          top: 12px;
+        }
+
+        &::after {
+          width: 1px;
+          height: 17px;
+          left: 12px;
+          top: 4px;
+        }
+      }
+    }
+  }
+
+  .figure-pop-main,
+  .work-pop-main {
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 20px;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      border: none;
+      box-shadow: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background: rgba(255, 255, 255, .6);
+      border: none;
+      box-shadow: none;
+    }
+
+    &::-webkit-scrollbar-track {
+      border: none;
+      box-shadow: none;
+      background: rgba(255, 255, 255, 0)
+    }
+  }
+
+  @keyframes figure-animate {
+    0% {
+      transform: translateY(0)
+    }
+
+    25% {
+      transform: translateY(-6px)
+    }
+
+    50% {
+      transform: translateY(0)
+    }
+
+    75% {
+      transform: translateY(-4px)
+    }
+
+    100% {
+      transform: translateY(0)
     }
   }
 }

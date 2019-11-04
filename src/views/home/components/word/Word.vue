@@ -1,9 +1,13 @@
 <template>
   <div class="word">
-    <span :class="wordState.in?'animate':''">Hey There</span><br/>
-    <span :class="wordState.middle?'animate':''">I'm Arthur.O</span><br/>
-    <span :class="wordState.out?'animate':''">( σ'ω')σ<strong>#Skr</strong>
-    <i :class="wordState.cursor?'cursor':''"></i>
+    <span :class="wordState.in?'animate':''">Hey There</span>
+    <br />
+    <span :class="wordState.middle?'animate':''">I'm songjunchao.cn</span>
+    <br />
+    <span :class="wordState.out?'animate':''">
+      ( σ'ω')σ
+      <strong>#Skr</strong>
+      <i :class="wordState.cursor?'cursor':''"></i>
     </span>
   </div>
 </template>
@@ -41,5 +45,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import './word.scss'
+@import "./word.scss";
 </style>
