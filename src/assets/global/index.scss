@@ -234,4 +234,10 @@ body {
     //   }
     // }
   }
+  .home{
+    height: calc(100% - 36px);
+    .app-center{
+      height: 100%;
+    }
+  }
 }

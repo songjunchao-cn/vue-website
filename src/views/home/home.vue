@@ -1,20 +1,18 @@
 <template>
-  <div class="home">
-    <Header/>
-    <div class="container-fluid">
-      <router-view></router-view>
+  <main class="home">
+    <div class="app-center">
+      <Word/>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 // @ is an alias to /src
-import Header from '@/components/header/Header'
-
+import Word from './components/word/Word'
 export default {
   name: 'home',
   components: {
-    Header
+    Word
   }
 }
 </script>
