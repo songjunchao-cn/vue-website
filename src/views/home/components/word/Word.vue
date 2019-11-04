@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { setTimeout } from 'timers'
 export default {
   name: 'word',
   //   首页文字动画
