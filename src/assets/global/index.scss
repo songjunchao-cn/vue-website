@@ -407,6 +407,40 @@ body {
     }
   }
 
+/*pop style*/
+div[class*='figure-style-']{
+  border-radius: $radius;
+  border: $b_border;
+}
+.figure-style-wathet{
+  background-color: $color_wathet
+}
+.figure-style-pink{
+  background-color: $color_pink
+}
+.figure-style-violet{
+  background-color: $color_violet
+}
+.figure-style-white{
+  background-color: #fff;
+  &>p{
+    background-color: #d8dce3;
+  }
+}
+.figure-style-main{
+  background-color: $color_main
+}
+.figure-style-light{
+  background-color: #fffbf3
+}
+.figure-style-setting{
+  background-color: #e2e2e2
+}
+.figure-style-none{
+  top: 0;
+  left: 0;
+}
+
   @keyframes figure-animate {
     0% {
       transform: translateY(0)

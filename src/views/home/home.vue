@@ -1,4 +1,5 @@
 <template>
+<div>
   <main class="home">
     <div class="app-center">
       <Word/>
@@ -6,6 +7,8 @@
       <Footer/>
     </div>
   </main>
+  <ShowMe/>
+</div>
 </template>
 
 <script>
@@ -13,11 +16,13 @@
 import Word from './components/word/Word'
 import Footer from './components/footer/Footer'
 import MyIcon from './components/icons/Icons'
+import ShowMe from './components/showMe/ShowMe'
 export default {
   name: 'home',
   components: {
     Word,
     MyIcon,
+    ShowMe,
     Footer
   }
 }

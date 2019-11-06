@@ -1,7 +1,7 @@
 <template>
   <div class="figureBox">
     <div class="figure-flex" v-for="item in figures" :key="item.src">
-      <figure>
+      <figure @click="showItem(item)">
         <img :src="item.src" alt />
         <figcaption>{{item.text}}</figcaption>
       </figure>
@@ -48,6 +48,11 @@ export default {
           type: 'setting'
         }
       ]
+    }
+  },
+  methods: {
+    showItem (item) {
+
     }
   }
 }
