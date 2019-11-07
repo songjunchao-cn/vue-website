@@ -33,12 +33,6 @@
     transform: translate(-50%,-50%);
   }
 }
-
-@keyframes noise-anim{
-  @for $i from 1 through 20{
-     #{$i*5%}{clip:rect(random(100)+px,9999px,random(100)+px,0);}
-  }
-}
 .glitch:after{
   content: url( '~@/assets/images/glitch-2.png');
   position:absolute;
@@ -47,15 +41,12 @@
   transform: translate(-50%,-50%);
   overflow:hidden;
   z-index: 4;
-  clip:rect(0,900px,0,0); 
+  clip:rect(0,200px,0,0); 
   animation:noise-anim 2s infinite linear alternate-reverse;
 }
-
-
-
-@keyframes noise-anim-2{
-  @for $i from 1 through 20{
-     #{$i*5%}{clip:rect(random(100)+px,9999px,random(100)+px,0);}
+@keyframes noise-anim{
+  @for $i from 1 through 50{
+     #{$i*2%}{clip:rect(random(100)+px,200px,random(100)+px,0);}
   }
 }
 .glitch:before{
@@ -66,10 +57,14 @@
   transform: translate(-50%,-50%);
   overflow:hidden;
   z-index: 4;
-  clip:rect(0,900px,0,0); 
+  clip:rect(0,200px,0,0); 
   animation:noise-anim-2 3s infinite linear alternate-reverse;
 }
-
+@keyframes noise-anim-2{
+  @for $i from 1 through 20{
+     #{$i*5%}{clip:rect(random(100)+px,200px,random(100)+px,0);}
+  }
+}
 
 @media screen and (max-width: 480px) {
   ul.settBox{
