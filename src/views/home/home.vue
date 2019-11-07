@@ -24,6 +24,10 @@ export default {
     MyIcon,
     ShowMe,
     Footer
+  },
+  data () {
+    return {
+    }
   }
 }
 </script>

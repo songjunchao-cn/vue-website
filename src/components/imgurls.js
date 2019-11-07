@@ -3,7 +3,7 @@ import logo from '../assets/images/logo.png'
 import mail from '../assets/images/mail.png'
 import smile from '../assets/images/smile.png'
 import git from '../assets/images/git.png'
-
+import glitch from '../assets/images/glitch.png'
 import sup from '../assets/images/sup.png'
 import readme from '../assets/images/readme.png'
 import msg from '../assets/images/msg.png'
@@ -69,6 +69,7 @@ const homeIcon = {
 }
 
 const homeImg = {
+  glitch,
   logo,
   mail,
   smile,
