@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition>
+    <transition :name="animationName">
       <slot></slot>
     </transition>
   </div>
@@ -9,6 +9,12 @@
 <script>
 export default {
   name: 'fadeTransition',
+  props: {
+    animationName: {
+      type: String,
+      default: 'fade'
+    }
+  },
   data () {
     return {
     }
@@ -18,10 +24,11 @@ export default {
 </script>
 
 <style lang='scss' scoped>
- .v-enter, .v-leave-to {
+ .fade-enter, .fade-leave-to {
    opacity: 0
  }
-  .v-enter-active, .v-leave-active{
-    transition: opacity 1s
+  .fade-enter-active, .fade-leave-active{
+    transition: opacity 1s;
+    transition-delay: 0.1s;
   }
 </style>

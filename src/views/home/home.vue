@@ -3,7 +3,7 @@
       <div class="app-center">
         <Word />
         <MyIcon @clickIcon='clickIcon'/>
-        <Footer />
+        <Footer/>
         <ReadMe v-model="readMeVisible"/>
       </div>
     </main>
@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     clickIcon (item) {
-      // icon触发方法
+      // icons触发方法
       this[item + 'Visible'] = true
     }
   }
