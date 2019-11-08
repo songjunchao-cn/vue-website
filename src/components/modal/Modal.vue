@@ -1,4 +1,5 @@
 <template>
+ <fade-transition>
   <div v-show="visible" :class="['figure-pop','figure-style-'+config.style]">
     <p>
       <a @click="close"></a>
@@ -9,9 +10,11 @@
       <slot></slot>
     </div>
   </div>
+  </fade-transition>
 </template>
 
 <script>
+import fadeTransition from '../transition/fadeTransition'
 export default {
   name: 'modal',
   props: {
@@ -28,6 +31,9 @@ export default {
         }
       }
     }
+  },
+  components: {
+    fadeTransition
   },
   data () {
     return {

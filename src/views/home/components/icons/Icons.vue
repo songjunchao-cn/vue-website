@@ -19,7 +19,8 @@ export default {
           src: homeIcon.sup,
           text: '点赞',
           isShow: false,
-          unmove: true
+          unmove: true,
+          label: 'sup'
           // child: SupPug,
           // type: 'none',
           // add: {
@@ -29,9 +30,10 @@ export default {
         {
           src: homeIcon.readme,
           text: '说明',
-          isShow: false,
+          label: 'readMe'
+          // isShow: false,
           // child: ShowMe,
-          type: 'main'
+          // type: 'main'
         },
         {
           src: homeIcon.msg,
@@ -52,7 +54,8 @@ export default {
   },
   methods: {
     showItem (item) {
-
+      // 向home传递label值
+      this.$emit('clickIcon', item.label)
     }
   }
 }
