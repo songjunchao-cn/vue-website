@@ -4,6 +4,7 @@
         <Word />
         <MyIcon @clickIcon='clickIcon'/>
         <Footer/>
+        <Sup/>
         <ReadMe v-model="readMeVisible"/>
       </div>
     </main>
@@ -15,13 +16,15 @@ import Word from './components/word/Word'
 import Footer from './components/footer/Footer'
 import MyIcon from './components/icons/Icons'
 import ReadMe from './components/readMe/readMe'
+import Sup from './components/sup/Sup'
 export default {
   name: 'home',
   components: {
     Word,
     MyIcon,
     ReadMe,
-    Footer
+    Footer,
+    Sup
   },
   data () {
     return {

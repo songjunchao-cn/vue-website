@@ -108,5 +108,6 @@ let parrotUrl = {}
 parrotSrc.map((url) => {
   [].push.call(parrotUrl, url)
 })
+// 类数组push
 
 export { homeIcon, homeImg, workIcon, parrotUrl, aboutImg }
