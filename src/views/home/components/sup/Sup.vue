@@ -13,8 +13,8 @@
 </template>
 
 <script>
-var PARROTS = 25 // 半径
-var DIAMETER = 30// 放大倍率
+var PARROTS = 215 // 半径
+// var DIAMETER = 30// 放大倍率
 // var ROTATION = 0.1
 // var SPEED = 0.3
 // var SPACING = 4
@@ -39,9 +39,10 @@ export default {
 
   },
   mounted () {
+    // 初始化路径取18以内整数
     this.initSrcs()
+    // 初始化位置
     this.initPosition()
-    console.log(this.windowSize)
   },
   methods: {
     initSrcs () {
@@ -52,6 +53,18 @@ export default {
     initPosition () {
       for (var i = 0; i < PARROTS; i++) {
         this.parrots[i] = { x: 0, y: 0, X: 0, Y: 0 }
+      }
+      this.makeCircle()
+    },
+    makeCircle () {
+      console.log(this.parrotUrl)
+      let dom = this.$refs.imgs
+      for (let index = 0; index < dom.children.length; index++) {
+        // 弧度
+        let rad = 20 * index * (Math.PI / 180)
+        dom.children[index].style.transform = 'translate(' +
+        (this.mouse.x + Math.sin(rad) * PARROTS) + 'px,' +
+        (this.mouse.y + Math.cos(rad) * PARROTS) + 'px)'
       }
     }
   },
@@ -67,8 +80,8 @@ export default {
     },
     mouse () {
       return {
-        x: Math.round(this.SIZE * DIAMETER * 0.208333) + OFFSET,
-        y: Math.round(this.SIZE * DIAMETER * 0.208333) + OFFSET
+        x: this.windowSize.w / 2,
+        y: this.windowSize.h / 2
       }
     }
   }

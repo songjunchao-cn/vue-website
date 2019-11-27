@@ -105,9 +105,10 @@ const workIcon = {
 }
 
 let parrotUrl = {}
+// 类数组push
 parrotSrc.map((url) => {
   [].push.call(parrotUrl, url)
 })
-// 类数组push
+delete parrotUrl.length
 
 export { homeIcon, homeImg, workIcon, parrotUrl, aboutImg }
