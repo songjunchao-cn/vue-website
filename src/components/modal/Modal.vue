@@ -1,7 +1,7 @@
 <template>
  <fade-transition>
   <div v-show="visible" :class="['figure-pop','figure-style-'+config.style]">
-    <p>
+    <p class="close">
       <a @click="close"></a>
       {{config.title}}
     </p>

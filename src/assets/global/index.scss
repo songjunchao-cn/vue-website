@@ -439,6 +439,10 @@ div[class*='figure-style-']{
 .figure-style-none{
   top: 0;
   left: 0;
+  border: none !important;
+  .close{
+    display: none;
+  }
 }
 
   @keyframes figure-animate {

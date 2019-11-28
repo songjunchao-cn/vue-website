@@ -1,4 +1,5 @@
 <template>
+<vue-modal v-model="supVisible" :config="showMeConfig">
   <div class="supBox">
     <div class="addSupNum">
       <h1>THANK U!</h1>
@@ -10,19 +11,23 @@
       <img v-for="item in parrotUrl" :key="item" :src="item" />
     </div>
   </div>
+</vue-modal>
 </template>
 
 <script>
-var PARROTS = 215 // 半径
-// var DIAMETER = 30// 放大倍率
-// var ROTATION = 0.1
-// var SPEED = 0.3
-// var SPACING = 4
+// 图片数目
+var PARROTS = 18
+// 半径
+var R = 180
 var OFFSET = 20
-// var SIZE = 30
-// let parrotsSrcs = []
 export default {
   name: 'supMe',
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       bright: false,
@@ -32,7 +37,12 @@ export default {
       // 存放位置信息
       parrots: [],
       imgLoad: 0,
-      current: OFFSET
+      current: OFFSET,
+      showMeConfig: {
+        title: '说明',
+        style: 'none'
+      },
+      supVisible: this.value
     }
   },
   created () {
@@ -41,8 +51,7 @@ export default {
   mounted () {
     // 初始化路径取18以内整数
     this.initSrcs()
-    // 初始化位置
-    this.initPosition()
+    this.makeCircle()
   },
   methods: {
     initSrcs () {
@@ -50,21 +59,14 @@ export default {
         this.parrotsSrcs.push(this.parrotUrl[~~(Math.random() * 18)]) // gif图序列,取18内的整数
       }
     },
-    initPosition () {
-      for (var i = 0; i < PARROTS; i++) {
-        this.parrots[i] = { x: 0, y: 0, X: 0, Y: 0 }
-      }
-      this.makeCircle()
-    },
     makeCircle () {
-      console.log(this.parrotUrl)
       let dom = this.$refs.imgs
       for (let index = 0; index < dom.children.length; index++) {
         // 弧度
         let rad = 20 * index * (Math.PI / 180)
         dom.children[index].style.transform = 'translate(' +
-        (this.mouse.x + Math.sin(rad) * PARROTS) + 'px,' +
-        (this.mouse.y + Math.cos(rad) * PARROTS) + 'px)'
+        (this.mouse.x - OFFSET + Math.sin(rad) * R) + 'px,' +
+        (this.mouse.y - OFFSET + Math.cos(rad) * R) + 'px)'
       }
     }
   },
@@ -82,6 +84,23 @@ export default {
       return {
         x: this.windowSize.w / 2,
         y: this.windowSize.h / 2
+      }
+    }
+  },
+  watch: {
+    value (val) {
+      // 接收home向下传递的值
+      this.supVisible = val
+    },
+    supVisible (val) {
+      // 向上home传递
+      if (val) {
+        setTimeout(() => {
+          val = false
+          this.$emit('input', val)
+        }, 3000)
+      } else {
+        this.$emit('input', val)
       }
     }
   }

@@ -4,7 +4,7 @@
         <Word />
         <MyIcon @clickIcon='clickIcon'/>
         <Footer/>
-        <Sup/>
+        <Sup v-model="supVisible"/>
         <ReadMe v-model="readMeVisible"/>
       </div>
     </main>
@@ -28,13 +28,15 @@ export default {
   },
   data () {
     return {
-      readMeVisible: false
+      readMeVisible: false,
+      supVisible: false
     }
   },
   methods: {
     clickIcon (item) {
       // icons触发方法
       this[item + 'Visible'] = true
+      console.log(this[item + 'Visible'], item + 'Visible')
     }
   }
 }
