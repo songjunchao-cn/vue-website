@@ -3,7 +3,7 @@
   <div class="supBox">
     <div class="addSupNum">
       <h1>THANK U!</h1>
-      <div :class="bright?'numSpan'+bright: 'numSpan'">
+      <div :class="{'numSpan bright':bright,'numSpan':bright}">
         {{num}}
       </div>
     </div>
@@ -30,7 +30,7 @@ export default {
   },
   data () {
     return {
-      bright: false,
+      bright: 'bright',
       num: 1,
       // gif序列18内取整数,用于堆放文件路径信息
       parrotsSrcs: [],
@@ -98,7 +98,7 @@ export default {
         setTimeout(() => {
           val = false
           this.$emit('input', val)
-        }, 3000)
+        }, 3000000)
       } else {
         this.$emit('input', val)
       }
