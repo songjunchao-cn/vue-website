@@ -31,9 +31,9 @@ export default {
     return {
       nav: [
         { indent: true, text: 'HOME', herf: '/' },
+        { indent: false, text: 'BLOG', herf: '/blog' },
         { indent: false, text: 'WORK', herf: '/work' },
-        { indent: false, text: 'ABOUT', herf: 'about' },
-        { indent: false, text: 'BLOG', herf: '/blog' }
+        { indent: false, text: 'ABOUT', herf: 'about' }
       ],
       time: new Date(),
       tabName: 'HOME'
