@@ -3,11 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Modal from './components/modal/export'
+import axios from 'axios'
 import * as imgUrls from './components/imgurls'
+import * as api from './api/api'
 
 Vue.config.productionTip = false
 Vue.prototype.$imgUrls = imgUrls
-Vue.use(Modal)
+Vue.prototype.$api = api
+Vue.use(Modal, axios)
 
 new Vue({
   router,

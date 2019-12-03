@@ -5,10 +5,10 @@
         <span>
           <img :src="$imgUrls.homeImg.logo" alt />
         </span>
-        <a :class="{'nav-index': item.text === tabName}"
+        <a :class="{'nav-index': item.name === tabName}"
            v-for="item in nav"
            :key="item.herf"
-           @click="changeTab(item.herf,item.text)"
+           @click="changeTab(item.herf)"
            >
            <!-- <router-link :to='item.herf'></router-link> -->
           {{item.text}}
@@ -30,25 +30,28 @@ export default {
   data () {
     return {
       nav: [
-        { indent: true, text: 'HOME', herf: '/' },
-        { indent: false, text: 'BLOG', herf: '/blog' },
-        { indent: false, text: 'WORK', herf: '/work' },
-        { indent: false, text: 'ABOUT', herf: 'about' }
+        { indent: true, name: 'home', text: 'HOME', herf: '/' },
+        { indent: false, name: 'blog', text: 'BLOG', herf: '/blog' },
+        { indent: false, name: 'work', text: 'WORK', herf: '/work' },
+        { indent: false, name: 'about', text: 'ABOUT', herf: 'about' }
       ],
-      time: new Date(),
-      tabName: 'HOME'
+      time: new Date()
     }
   },
   created () {},
   beforeMount () {},
   mounted () {
     setInterval(this.getTimeNow, 1000)
+    console.log(this.$route)
   },
   computed: {
     formatTime () {
       return `${this.pollyTime(this.time.getHours())}:${this.pollyTime(
         this.time.getMinutes()
       )}:${this.pollyTime(this.time.getSeconds())}`
+    },
+    tabName () {
+      return this.$route.name
     }
   },
   methods: {
@@ -59,8 +62,7 @@ export default {
       let _t = +t < 10 ? `0${t}` : t
       return _t
     },
-    changeTab (herf, text) {
-      this.tabName = text
+    changeTab (herf) {
       this.$router.push(herf)
     }
   }

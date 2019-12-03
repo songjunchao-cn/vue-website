@@ -69,7 +69,9 @@
 
 @keyframes bgAnimate{
   0%{
+      //  x轴缩放
       transform: scaleX(0);
+      // 处于x轴位置
       transform-origin: left;
   }
   40%{
