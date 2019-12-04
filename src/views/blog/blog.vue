@@ -18,10 +18,10 @@ export default {
   methods: {
     async getArticleList () {
       try {
-        const { data } = await this.$api.getUserApi({ email: 'sjc@qq.com' })
-        console.log(data)
+        const data = await this.$api.crosArticleApi()
+        console.log(data, 'data')
       } catch (err) {
-
+        console.log(err, 'err')
       }
     }
   }

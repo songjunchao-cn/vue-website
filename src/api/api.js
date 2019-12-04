@@ -9,11 +9,10 @@ export function getUserApi (params) {
   return request(config)
 }
 
-export function postUserApi (data) {
+export function crosArticleApi () {
   const config = {
-    url: '/u/postUser',
-    method: 'post',
-    data
+    url: 'https://api.github.com/repos/ArthurYung/my-voice/issues',
+    exclude: true
   }
   return request(config)
 }

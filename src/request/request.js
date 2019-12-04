@@ -11,10 +11,11 @@ import axios from 'axios'
 // 超时时间
 axios.defaults.timeout = 30000
 // 跨域请求，允许保存cookie
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = false
 // NProgress.configure({ showSpinner: false })// NProgress Configuration
 // HTTP request拦截
 axios.interceptors.request.use(config => {
+  if (config.url.startsWith('http')) return config
   config.url = process.env.VUE_APP_URL + config.url
   // NProgress.start() // start progress bar
   return config
@@ -33,7 +34,7 @@ axios.interceptors.response.use(data => {
       console.log('身份信息已过期')
     }
   }
-  return Promise.resolve(error.response.data)
+  return Promise.resolve(error)
 })
 
 export default axios

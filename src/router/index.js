@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// 访问时全部加载
 import Root from '../views/root/root'
 import Home from '../views/home/home'
 import Blog from '../views/blog/blog'
