@@ -1,6 +1,6 @@
 <template>
  <fade-transition>
-  <div v-show="visible" :class="['figure-pop','figure-style-'+config.style]">
+  <div v-if="visible" :class="['figure-pop-'+config.type,'figure-style-'+config.style]">
     <p class="close">
       <a @click="close"></a>
       {{config.title}}
@@ -27,7 +27,8 @@ export default {
       default () {
         return {
           title: '',
-          style: 'main'
+          style: 'main',
+          type: 'center'
         }
       }
     }

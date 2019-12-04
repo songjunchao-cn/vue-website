@@ -38,7 +38,8 @@ export default {
     return {
       showMeConfig: {
         title: '说明',
-        style: 'main'
+        style: 'main',
+        type: 'center'
       },
       user: {
         name: '222'

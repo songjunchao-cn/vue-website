@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fade">
     <transition :name="animationName">
       <slot></slot>
     </transition>

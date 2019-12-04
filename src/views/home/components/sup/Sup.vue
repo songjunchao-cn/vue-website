@@ -40,7 +40,8 @@ export default {
       current: OFFSET,
       showMeConfig: {
         title: '说明',
-        style: 'none'
+        style: 'none',
+        type: 'center'
       },
       supVisible: this.value
     }
