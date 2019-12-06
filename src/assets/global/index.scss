@@ -3,14 +3,7 @@
 
 @import './blogdoll.scss'; //Blog暂用样式
 $color_black:#111111;
-$font_name: "erikos",
-"Helvetica Neue",
-Helvetica,
-Arial,
-"Hiragino Sans GB",
-"Hiragino Sans GB W3",
-"WenQuanYi Micro Hei",
-sans-serif;
+$font_name: "LQXianEr","erikos","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
 $big_size:18px;
 $radius:18px;
 
@@ -304,7 +297,6 @@ body {
         color: #fff;
         font-size: 1rem;
         margin-top: 4px;
-        font-family: $font;
         transition: transform ease-out 0.3s
       }
     }

@@ -10,6 +10,15 @@
         <h3 :class="titleCss">{{item.title}}</h3>
         <div>
           <span :class="timeCss">{{item.created_at }}</span>
+          <span v-for="element in item.labels" :key="element.id">
+            <Label>
+              <a
+                :class="lableCss"
+                target="_blank"
+                :style="'color:#'+`${element.color}`"
+              >{{element.name}}</a>
+            </Label>
+          </span>
           <!-- <Labels labels={articleData.labels}/> -->
         </div>
       </li>
@@ -36,6 +45,7 @@ export default {
       waitCss: 'blog-menu-wait',
       titleCss: 'blog-menu-title',
       timeCss: 'blog-menu-time',
+      lableCss: 'blog-menu-label',
       currentArticle: this.articleData[0]
     }
   },

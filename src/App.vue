@@ -5,6 +5,6 @@
 </template>
 
 <style lang="scss">
-@import "@/assets/global/index.scss";
 @import "@/assets/global/init.scss";
+@import "@/assets/global/index.scss";
 </style>

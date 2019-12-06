@@ -22,16 +22,15 @@ span,a,button,li{
   -moz-user-focus: none;
 }
 *:focus { 
-          outline: none;
-         background-color: transparent;
-     }
+  outline: none
+}
 ::selection{background:#000;color:#fff }
 ::-moz-selection{background:#000;color:#fff }
 
 @font-face {
-    font-family: 'erikos';
-    src: url-loader('./erikos.woff2') format('woff2'),
-    url-loader('./erikos.woff') format('woff');
+    font-family: 'LQXianEr';
+    src: url('assets/global/LQXianEr.woff2') format('woff2'),
+    url('assets/global/LQXianEr.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-size:67.5%;
