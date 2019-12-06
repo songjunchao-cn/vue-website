@@ -9,10 +9,7 @@
            v-for="item in nav"
            :key="item.herf"
            @click="changeTab(item.herf)"
-           >
-           <!-- <router-link :to='item.herf'></router-link> -->
-          {{item.text}}
-        </a>
+        >{{item.text}}</a>
       </nav>
       <div class="times">
         <a target="_blank" href="https://github.com/songjunchao-cn">

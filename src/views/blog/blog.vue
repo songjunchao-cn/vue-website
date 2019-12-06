@@ -22,7 +22,7 @@ export default {
       articleData: [],
       // menuVisible: true,
       menuConfig: {
-        title: '说明',
+        title: 'Blogs',
         style: 'white',
         type: 'about'
       }
