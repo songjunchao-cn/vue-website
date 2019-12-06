@@ -1,5 +1,5 @@
 <template>
-  <vue-modal v-model="readMeVisible" :config="showMeConfig">
+
     <ul class="settBox">
       <li>
         <div class="glitch">
@@ -22,29 +22,17 @@
         <em>{{user.name}}</em>
       </li>
     </ul>
-  </vue-modal>
+
 </template>
 
 <script>
 export default {
   name: 'readMe',
-  props: {
-    value: {
-      type: Boolean,
-      default: false
-    }
-  },
   data () {
     return {
-      showMeConfig: {
-        title: '说明',
-        style: 'main',
-        type: 'center'
-      },
       user: {
         name: '222'
-      },
-      readMeVisible: this.value
+      }
     }
   },
   mounted () {

@@ -1,5 +1,5 @@
 <template>
-<vue-modal v-model="supVisible" :config="showMeConfig">
+
   <div class="supBox">
     <div class="addSupNum">
       <h1>THANK U!</h1>
@@ -11,7 +11,6 @@
       <img v-for="item in parrotUrl" :key="item" :src="item" />
     </div>
   </div>
-</vue-modal>
 </template>
 
 <script>
@@ -22,12 +21,6 @@ var R = 180
 var OFFSET = 20
 export default {
   name: 'supMe',
-  props: {
-    value: {
-      type: Boolean,
-      default: false
-    }
-  },
   data () {
     return {
       bright: 'bright',
@@ -36,14 +29,7 @@ export default {
       parrotsSrcs: [],
       // 存放位置信息
       parrots: [],
-      imgLoad: 0,
-      current: OFFSET,
-      showMeConfig: {
-        title: '说明',
-        style: 'none',
-        type: 'center'
-      },
-      supVisible: this.value
+      imgLoad: 0
     }
   },
   created () {
@@ -89,21 +75,6 @@ export default {
     }
   },
   watch: {
-    value (val) {
-      // 接收home向下传递的值
-      this.supVisible = val
-    },
-    supVisible (val) {
-      // 向上home传递
-      if (val) {
-        setTimeout(() => {
-          val = false
-          this.$emit('input', val)
-        }, 3000000)
-      } else {
-        this.$emit('input', val)
-      }
-    }
   }
 }
 </script>

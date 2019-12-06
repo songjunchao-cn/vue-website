@@ -1,13 +1,17 @@
 <template>
-    <main class="home">
-      <div class="app-center">
-        <Word />
-        <MyIcon @clickIcon='clickIcon'/>
-        <Footer/>
-        <Sup v-model="supVisible"/>
-        <ReadMe v-model="readMeVisible"/>
-      </div>
-    </main>
+  <main class="home">
+    <div class="app-center">
+      <Word />
+      <MyIcon @clickIcon="clickIcon" />
+      <Footer />
+      <vue-modal v-model="supVisible" :config="supConfig">
+        <Sup />
+      </vue-modal>
+      <vue-modal v-model="readMeVisible" :config="readMeConfig">
+        <ReadMe />
+      </vue-modal>
+    </div>
+  </main>
 </template>
 
 <script>
@@ -29,7 +33,17 @@ export default {
   data () {
     return {
       readMeVisible: false,
-      supVisible: false
+      supVisible: false,
+      supConfig: {
+        title: '点赞',
+        style: 'none',
+        type: 'center'
+      },
+      readMeConfig: {
+        title: '说明',
+        style: 'main',
+        type: 'center'
+      }
     }
   },
   methods: {
@@ -37,6 +51,16 @@ export default {
       // icons触发方法
       this[item + 'Visible'] = true
       console.log(this[item + 'Visible'], item + 'Visible')
+    }
+  },
+  watch: {
+    supVisible (value) {
+      // 3秒后自动关闭
+      if (value) {
+        setTimeout(() => {
+          this.supVisible = false
+        }, 3000)
+      }
     }
   }
 }
