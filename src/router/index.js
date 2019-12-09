@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// 访问时全部加载
 import Root from '../views/root/root'
 import Home from '../views/home/home'
 import Blog from '../views/blog/blog'
 import Work from '../views/work/work'
+const notFind = () => import('../components/404/notFind')
 
 Vue.use(VueRouter)
 
@@ -13,12 +13,12 @@ const routes = [
     path: '/',
     name: 'Root',
     component: Root,
-    redirect: '/home',
     children: [
       {
         path: '/home',
         component: Home,
-        name: 'home'
+        name: 'home',
+        alias: '/'
       },
       {
         path: '/blog',
@@ -29,6 +29,11 @@ const routes = [
         path: '/work',
         component: Work,
         name: 'work'
+      },
+      {
+        path: '*',
+        component: notFind,
+        name: 'notFind'
       }
     ]
     //   {
