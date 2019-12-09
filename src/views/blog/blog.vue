@@ -1,27 +1,35 @@
 <template>
   <div class="app-center blog">
     <div class="blog-main">
-      <div class="blog-menu">
         <vue-modal class="blog-menu-box" v-model="menuVisible" :config="menuConfig">
-          <Menu :articleData="articleData" />
+          <Menu @getCurrentArticle='getCurrentArticle' :articleData="articleData" />
         </vue-modal>
-      </div>
+        <vue-modal class="blog-article-box" v-model="articleVisible" :config="articleConfig">
+          <Article :currentArticle="currentArticle" />
+        </vue-modal>
     </div>
   </div>
 </template>
 
 <script>
 import Menu from './components/menu/Menu'
+import Article from './components/article/Article'
 export default {
   name: 'blog',
   components: {
-    Menu
+    Menu,
+    Article
   },
   data () {
     return {
       articleData: [],
-      // menuVisible: true,
+      currentArticle: {},
       menuConfig: {
+        title: 'Blogs',
+        style: 'white',
+        type: 'about'
+      },
+      articleConfig: {
         title: 'Blogs',
         style: 'white',
         type: 'about'
@@ -38,14 +46,21 @@ export default {
       try {
         const { data } = await this.$api.crosArticleApi()
         this.articleData = data
+        this.currentArticle = data[0]
       } catch (err) {
         console.log(err, 'err')
       }
+    },
+    getCurrentArticle (currentArticle) {
+      this.currentArticle = currentArticle
     }
   },
   computed: {
     menuVisible () {
       return this.articleData.length > 0
+    },
+    articleVisible () {
+      return Object.values(this.currentArticle).length > 0
     }
   }
 }

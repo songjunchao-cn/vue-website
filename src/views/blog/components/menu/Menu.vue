@@ -10,16 +10,7 @@
         <h3 :class="titleCss">{{item.title}}</h3>
         <div>
           <span :class="timeCss">{{item.created_at }}</span>
-          <span v-for="element in item.labels" :key="element.id">
-            <Label>
-              <a
-                :class="lableCss"
-                target="_blank"
-                :style="'color:#'+`${element.color}`"
-              >{{element.name}}</a>
-            </Label>
-          </span>
-          <!-- <Labels labels={articleData.labels}/> -->
+          <Labels :labels='item.labels'/>
         </div>
       </li>
     </ul>
@@ -27,8 +18,12 @@
 </template>
 
 <script>
+import Labels from '../labels/Labels'
 export default {
   name: 'my-menu',
+  components: {
+    Labels
+  },
   props: {
     articleData: {
       type: Array,
@@ -45,7 +40,6 @@ export default {
       waitCss: 'blog-menu-wait',
       titleCss: 'blog-menu-title',
       timeCss: 'blog-menu-time',
-      lableCss: 'blog-menu-label',
       currentArticle: this.articleData[0]
     }
   },
@@ -56,6 +50,7 @@ export default {
   methods: {
     changeArticle (item) {
       this.currentArticle = item
+      this.$emit('getCurrentArticle', this.currentArticle)
     }
   }
 }
