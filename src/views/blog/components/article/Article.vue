@@ -6,17 +6,19 @@
           <span class = 'blog-menu-time'>{{currentArticle.created_at}}</span>
           <Labels :labels='currentArticle.labels'/>
           <div class='view' v-html='currentArticle.body' />
-          <!-- <Comments data={this.props.data} userInfo={this.props.userInfo} resetUserInfo={this.props.resetUserInfo} showLogin={this.props.showLogin}/> -->
+          <Comments/>
         </div>
       </div>
 </template>
 
 <script>
 import Labels from '../labels/Labels'
+import Comments from '../comments/Comments'
 export default {
   name: 'my-article',
   components: {
-    Labels
+    Labels,
+    Comments
   },
   props: {
     currentArticle: {
