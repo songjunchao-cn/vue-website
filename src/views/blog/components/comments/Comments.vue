@@ -11,21 +11,19 @@
       </div>
     </section>
     <section class="comment-form">
-      <div class="reaction-up" @click="upActiveItem">
-        <i></i>
-        <span>{UpItems.length}</span>
-      </div>
-      <div class="reaction-like" @click="likeActiveItem">
-        <i></i>
-        <span>{reactionsLikeItems.length}</span>
-      </div>
+      <CommentInput/>
+      <button class='comment-form-submit' @click="postComment">Comment</button>
     </section>
   </div>
 </template>
 
 <script>
+import CommentInput from '../input/Input'
 export default {
   name: 'comments',
+  components: {
+    CommentInput
+  },
   data () {
     return {
     }
@@ -35,6 +33,9 @@ export default {
 
     },
     likeActiveItem () {
+
+    },
+    postComment () {
 
     }
   }
