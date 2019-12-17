@@ -13,9 +13,9 @@
         <textarea
           ref="commentText"
           placeholder="Leave a comment"
-          :style="'height:'+currentHeight+'px'"
+          :style="'height:'+currentHeight+'px;'"
           @keyup="textAutoSize"
-        />
+        ></textarea>
       </div>
     </div>
   </div>
@@ -49,8 +49,37 @@ export default {
     selectEmoji () {
 
     },
-    textAutoSize (e) {
-      console.log(e, 'e')
+    textAutoSize () {
+      let element = this.$refs.commentText
+      let lineSize = this.getLineSize(element)
+      let realLine = this.getRealLine(element.value, lineSize)
+      let lineHeight = 22
+      let domHeight = 45
+      this.currentHeight = domHeight + lineHeight * (realLine - 1)
+    },
+    getLineSize (ele) {
+      let { fontSize, paddingLeft, paddingRight } = getComputedStyle(ele)
+      let width = ele.clientWidth - parseInt(paddingLeft) - parseInt(paddingRight)
+      // 放数字
+      return (2 * width / parseInt(fontSize))
+    },
+    getRealLine (str, size) {
+      // 行数
+      let len = 1
+      // 输入字符串数
+      let index = 0
+      str = str.replace(/[^\x00-\xff]/g, '01')
+      for (let i = 0; i < str.length; i++, index++) {
+        if (size < index) {
+          index = 0
+          len++
+        }
+        if (str.charCodeAt(i) === 10) {
+          index = 0
+          len++
+        }
+      }
+      return len
     }
   }
 }

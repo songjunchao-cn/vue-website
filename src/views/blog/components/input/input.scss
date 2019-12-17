@@ -21,6 +21,8 @@
         font-size: 14px;
         outline: none;
         border: 1px solid #d6d7dc;
+        word-break:break-all;
+        word-wrap:break-word;
         &:focus {
           border-color: $color_main;
           background-color: #fff0c2
