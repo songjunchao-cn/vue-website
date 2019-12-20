@@ -11,22 +11,30 @@
       </div>
     </section>
     <section class="comment-form">
-      <CommentInput/>
-      <button class='comment-form-submit' @click="postComment">Comment</button>
+      <CommentInput />
+      <button class="comment-form-submit" @click="postComment">Comment</button>
+    </section>
+    <section class="comment-view">
+      <CommentsList v-bind="$attrs"/>
     </section>
   </div>
 </template>
 
 <script>
 import CommentInput from '../input/Input'
+import CommentsList from '../commentsList/commentsList'
 export default {
   name: 'comments',
+  inheritAttrs: false,
   components: {
-    CommentInput
+    CommentInput,
+    CommentsList
   },
   data () {
     return {
     }
+  },
+  mounted () {
   },
   methods: {
     upActiveItem () {

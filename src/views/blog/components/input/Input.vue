@@ -4,7 +4,7 @@
       <div class="user-emoji">
         <span class="user-emoji-icon" @click="showEmojiView"></span>
         <fade-transition :animationName="animationName">
-          <div v-if="showEmoji" ref="emojiView" class="user-emoji-list" @click="selectEmoji(e)">
+          <div v-if="showEmoji" ref="emojiView" class="user-emoji-list" @click="selectEmoji($event)">
             <span v-for="(item, index) in emojiList" :key="index">{{item}}</span>
           </div>
         </fade-transition>
@@ -12,6 +12,7 @@
       <div class="user-input-enter">
         <textarea
           ref="commentText"
+          v-model="commentTextValue"
           placeholder="Leave a comment"
           :style="'height:'+currentHeight+'px;'"
           @keyup="textAutoSize"
@@ -39,15 +40,28 @@ export default {
       emojiList: EMOJI_LIST,
       currentHeight: 45,
       showEmoji: false,
-      animationName: 'fade'
+      animationName: 'fade',
+      commentTextValue: ''
     }
   },
   methods: {
     showEmojiView () {
+      this.focusInput()
       this.showEmoji = !this.showEmoji
     },
-    selectEmoji () {
-
+    selectEmoji (e) {
+      this.focusInput()
+      if (e.target.tagName === 'SPAN') {
+        let commentTextDom = this.$refs.commentText
+        let start = commentTextDom.selectionStart
+        let end = commentTextDom.selectionEnd
+        let text = this.commentTextValue
+        this.commentTextValue = text.slice(0, start) + e.target.innerText + text.slice(end)
+        this.showEmoji = false
+      }
+    },
+    focusInput () {
+      this.$refs.commentText.focus()
     },
     textAutoSize () {
       let element = this.$refs.commentText

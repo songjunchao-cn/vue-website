@@ -6,7 +6,7 @@
           <span class = 'blog-menu-time'>{{currentArticle.created_at}}</span>
           <Labels :labels='currentArticle.labels'/>
           <div class='view' v-html='currentArticle.body' />
-          <Comments/>
+          <Comments :currentArticle= 'currentArticle'/>
         </div>
       </div>
 </template>
