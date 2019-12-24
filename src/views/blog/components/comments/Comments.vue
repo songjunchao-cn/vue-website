@@ -16,6 +16,7 @@
     </section>
     <section class="comment-view">
       <CommentsList v-bind="$attrs"/>
+      <div style="textAlign: 'center', color: '#ccc'">这里空空如也～</div>
     </section>
   </div>
 </template>
@@ -23,6 +24,7 @@
 <script>
 import CommentInput from '../input/Input'
 import CommentsList from '../commentsList/commentsList'
+import { CancelToken } from 'axios'
 export default {
   name: 'comments',
   inheritAttrs: false,
@@ -35,8 +37,22 @@ export default {
     }
   },
   mounted () {
+    this.getArticleComments(this.$attrs)
   },
   methods: {
+    async getArticleComments (dataInfo) {
+      this.getCommentsCancel()
+      const { data = [] } = await this.axios({
+        url: `${dataInfo.url}/comments?time=${Date.now()}`,
+        cancelToken: new CancelToken((c) => {
+          this.getCommentsCancel = c
+        }),
+        headers: {
+          'Accept': 'application/vnd.github.squirrel-girl-preview+json'
+        }
+      })
+      this.comments = data.reverse()
+    },
     upActiveItem () {
 
     },
