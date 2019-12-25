@@ -9,36 +9,6 @@
     overflow-y: auto;
     height: 100vh;
   }
-  
-  .figureBox{
-    position: relative;
-    z-index: 800;
-    display: flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    margin-top: 16px;
-    & > div{
-      margin-right: 60px
-    }
-  }
-  .codeBox{
-    padding-top: 36px;
-    position: relative;
-    z-index: 10;
-    &>span{
-      font-size:1.8rem;
-      padding: 4px 14px;
-      letter-spacing: 4px;
-      color: #fff;
-      font-weight: 400;
-      margin-bottom:10px;
-      background-color: #101010
-    }
-    &>hr{
-      transform: scaleX(1.2);
-      margin-top: 30px
-    }
-  }
   .more{
     width: 180px;
     margin-top:40px;
