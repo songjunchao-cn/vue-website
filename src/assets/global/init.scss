@@ -29,16 +29,16 @@ span,a,button,li{
 
 @font-face {
     font-family: 'LQXianEr';
-    src: url('assets/global/LQXianEr.woff2') format('woff2'),
-    url('assets/global/LQXianEr.woff') format('woff');
+    src: url('./LQXianEr.woff2') format('woff2'),
+    url('./LQXianEr.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-size:67.5%;
 }
 @font-face {
   font-family: 'erikos';
-  src: url('assets/global/erikos.woff2') format('woff2'),
-  url('assets/global/erikos.woff') format('woff');
+  src: url('./erikos.woff2') format('woff2'),
+  url('./erikos.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-size:67.5%;
