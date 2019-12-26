@@ -1,5 +1,5 @@
 <template>
-  <main :class="'page'+scroll">
+  <main class="scroll">
     <div style="height:'auto';padding-bottom:'6rem'" class="app-center">
       <ListComponent title="Work" :figures="workFigure" />
       <ListComponent title="Code" :figures="codeFigure" />
