@@ -1,22 +1,18 @@
 <template>
   <div class="codeBox">
     <span>{{$attrs.title}}</span>
-    <div class="figureBox">
-      <div class="figure-flex" v-for="item in $attrs.figures" :key="item.src">
-        <figure @click="showItem(item)">
-          <img :src="item.src" alt />
-          <figcaption>{{item.text}}</figcaption>
-        </figure>
-      </div>
-    </div>
+    <MyIcon v-bind="$attrs" @clickIcon="clickIcon" />
     <hr align="center" width="100%" color="#1e1e1e" size="1" />
   </div>
 </template>
 
 <script>
-
+import MyIcon from '@/components/icons/Icons'
 export default {
   name: 'listComponent',
+  components: {
+    MyIcon
+  },
   data () {
     return {
 
@@ -25,10 +21,14 @@ export default {
   mounted () {
     console.log(this.$attrs, 'attrs')
   },
-  methods: {}
+  methods: {
+    clickIcon () {
+
+    }
+  }
 }
 </script>
 
 <style lang='scss' scoped>
-@import './listComponent.scss'
+@import "./listComponent.scss";
 </style>

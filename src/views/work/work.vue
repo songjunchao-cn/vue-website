@@ -1,6 +1,6 @@
 <template>
   <main :class="'page'+scroll">
-    <div style="height:'auto';paddingBottom:'6rem'" class="app-center">
+    <div style="height:'auto';padding-bottom:'6rem'" class="app-center">
       <ListComponent title="Work" :figures="workFigure" />
       <ListComponent title="Code" :figures="codeFigure" />
       <div @click="toAbout" class="more">
@@ -38,6 +38,11 @@ export default {
         { src: workIcon.vue, text: 'vue-pictring', isShow: false, type: 'white' },
         { src: workIcon.blog, text: 'My Blog', isShow: false, type: 'white' }
       ]
+    }
+  },
+  methods: {
+    toAbout () {
+
     }
   }
 }

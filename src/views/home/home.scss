@@ -1,1 +1,8 @@
-@import '@/views/home/components/word/word.scss'
+ .figureBox{
+    position: absolute;
+    z-index: 800;
+    top: 44px;
+    right: -14px;
+    display: flex;
+    flex-direction: column;
+  }
