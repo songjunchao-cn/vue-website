@@ -4,6 +4,7 @@ import Root from '../views/root/root'
 import Home from '../views/home/home'
 import Blog from '../views/blog/blog'
 import Work from '../views/work/work'
+import About from '../views/about/about'
 const notFind = () => import('../components/404/notFind')
 
 Vue.use(VueRouter)
@@ -29,6 +30,11 @@ const routes = [
         path: '/work',
         component: Work,
         name: 'work'
+      },
+      {
+        path: '/about',
+        component: About,
+        name: 'about'
       },
       {
         path: '*',

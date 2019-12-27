@@ -1,15 +1,13 @@
 <template>
- <fade-transition>
-  <div v-if="visible" :class="['figure-pop-'+config.type,'figure-style-'+config.style]">
-    <p class="close">
-      <a @click="close"></a>
-      {{config.title}}
-    </p>
-    <div class="figure-pop-main">
-        <!-- 匿名插槽，插入content -->
+  <fade-transition>
+    <div v-if="visible" :class="['figure-pop-'+config.type,'figure-style-'+config.style]">
+      <p class="close">
+        <a @click="close"></a>
+        {{config.title}}
+      </p>
+      <!-- 匿名插槽，插入content -->
       <slot></slot>
     </div>
-  </div>
   </fade-transition>
 </template>
 
@@ -35,6 +33,9 @@ export default {
   },
   components: {
     fadeTransition
+  },
+  mounted () {
+    console.log(this.config, 'config')
   },
   data () {
     return {
