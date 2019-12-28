@@ -11,24 +11,24 @@
       </div>
       <div class="introduce">
         <div class="myintro">
-          <Modules class="Introduce" />
+          <Introduce :introduceConfig='introduceConfig' class="Introduce" />
         </div>
         <div class="contact">
           <div class="github">
-            <Modules class="Git" />
+            <!-- <Modules class="Git" /> -->
           </div>
           <div class="weichart">
-            <Modules class="WeiChart" />
+            <!-- <Modules class="WeiChart" /> -->
           </div>
         </div>
       </div>
     </div>
     <div class="addMain">
       <div class="add">
-        <Modules class="MyAdd" />
+        <!-- <Modules class="MyAdd" /> -->
       </div>
       <div class="link">
-        <Modules class="OurLink" />
+        <!-- <Modules class="OurLink" /> -->
       </div>
     </div>
     <!-- {this.state.switchin?<Switch type="enter" callback={this.switchOut.bind(this)}/>:''} -->
@@ -38,12 +38,14 @@
 <script>
 import Photo from './componets/photo'
 import Mail from './componets/mail'
+import Introduce from './componets/Introduce'
 import { aboutImg } from '@/components/imgurls'
 export default {
   name: 'about',
   components: {
     Photo,
-    Mail
+    Mail,
+    Introduce
   },
   data () {
     return {
@@ -64,6 +66,15 @@ export default {
         },
         show: true,
         img: aboutImg.imail
+      },
+      introduceConfig: {
+        modelConfig: {
+          title: 'About Me',
+          style: 'light',
+          type: 'about'
+        },
+        show: true,
+        img: aboutImg.icloud
       }
     }
   },

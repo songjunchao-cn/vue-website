@@ -1,0 +1,33 @@
+<template>
+  <div class='mylabel'>
+<!-- <Cloud key={i} text={t} index={i}/> -->
+   <Cloud v-bind="$attrs" v-for="(item,index) in labels" :key="item" :index='index' :text='item'/>
+  </div>
+</template>
+
+<script>
+import Cloud from './cloud'
+export default {
+  name: 'myLabel',
+  components: {
+    Cloud
+  },
+  data () {
+    return {
+      labels: [
+        '#sjc',
+        '#90后',
+        '#前端新秀',
+        '#闷骚',
+        '[diss]',
+        '#伪文艺'
+      ]
+    }
+  },
+  methods: {}
+}
+</script>
+
+<style lang='scss' scoped>
+
+</style>
