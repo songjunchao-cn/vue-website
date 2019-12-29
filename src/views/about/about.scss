@@ -50,7 +50,7 @@
       position: absolute;
     }
   }
-  .github,.weichart{
+  .connect,.weichart{
     flex: 1 0;
     box-sizing: border-box;
     margin: 0 6px;
@@ -225,7 +225,7 @@
     .photo,.myintro,.link,.mail,.add{
       margin: 0 .2rem .4rem .2rem;
     }
-    .github,.weichart{
+    .connect,.weichart{
       margin: 0 .2rem;
     }
   }
@@ -296,7 +296,7 @@
     .link{
       margin-bottom: 60px;
     }
-    .photo,.github,.weichart,.mail{
+    .photo,.connect,.weichart,.mail{
       margin: .2rem;
     }
     .add{

@@ -14,7 +14,8 @@
           <Introduce :introduceConfig='introduceConfig' class="Introduce" />
         </div>
         <div class="contact">
-          <div class="github">
+          <div class="connect">
+            <Connect :connectConfig='connectConfig' class="Connect"/>
             <!-- <Modules class="Git" /> -->
           </div>
           <div class="weichart">
@@ -38,14 +39,16 @@
 <script>
 import Photo from './componets/photo'
 import Mail from './componets/mail'
-import Introduce from './componets/Introduce'
+import Introduce from './componets/introduce'
+import Connect from './componets/connect'
 import { aboutImg } from '@/components/imgurls'
 export default {
   name: 'about',
   components: {
     Photo,
     Mail,
-    Introduce
+    Introduce,
+    Connect
   },
   data () {
     return {
@@ -75,6 +78,15 @@ export default {
         },
         show: true,
         img: aboutImg.icloud
+      },
+      connectConfig: {
+        modelConfig: {
+          title: 'Tel',
+          style: 'violet',
+          type: 'about'
+        },
+        show: true,
+        img: aboutImg.igit
       }
     }
   },
