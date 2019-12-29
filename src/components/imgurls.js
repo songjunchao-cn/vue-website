@@ -27,7 +27,7 @@ import imail from '../assets/images/mymail.png'
 import igit from '../assets/images/mygit.png'
 import icode from '../assets/images/mycode.png'
 import iadd from '../assets/images/myadd.png'
-import icity from '../assets/images/Vue.png'
+import icity from '../assets/images/citybg.png'
 // /citybg
 import emjz from '../assets/images/emoji/zzz.png'
 import emjs from '../assets/images/emoji/sad.png'
