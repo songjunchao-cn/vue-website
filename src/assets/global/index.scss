@@ -265,7 +265,52 @@ body {
     }
   }
 
-  /*icon*/
+  // 路由动画
+  @mixin SwitchDivInit {
+    width: 100%;
+    height: calc(100% - 37px);
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    left: 0; 
+  }
+  
+  @mixin SwitchSpanInit {
+    display: block;
+    width: 100%;
+    height: calc(100% / 16) ;
+    background-color: $color_main;  
+    transition: 0.6s ease-in; 
+  }
+  .switch-bg{
+    @include SwitchDivInit();
+    background-color: $color_main;
+  }
+  .animate-enter{
+    @include SwitchDivInit();
+    span{
+      @include SwitchSpanInit();
+      transform: scale(1,1.05);
+      transform-origin: right top;  
+    }
+    span.active-enter{
+      transform: scale(0,1.05);
+    }
+  }
+  
+  .animate-leave{
+    @include SwitchDivInit();
+    span{
+      @include SwitchSpanInit();
+      transform: scale(0,1.05);
+      transform-origin: left top;  
+    }
+    span.active-leave{
+      transform: scale(1,1.05);
+    }
+  } 
+  
+  // icon
   .figure-flex {
     flex: 0 1 auto;
 
@@ -397,7 +442,7 @@ body {
     }
   }
 
-/*pop style*/
+// pop style
 div[class*='figure-style-']{
   border-radius: $radius;
   border: $b_border;
