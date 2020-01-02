@@ -16,20 +16,19 @@
         <div class="contact">
           <div class="connect">
             <Connect :connectConfig='connectConfig' class="Connect"/>
-            <!-- <Modules class="Git" /> -->
           </div>
-          <div class="weichart">
-            <!-- <Modules class="WeiChart" /> -->
+          <div class="wechat">
+          <Wechat :wechatConfig='wechatConfig' class="Wechat"/>
           </div>
         </div>
       </div>
     </div>
     <div class="addMain">
       <div class="add">
-        <!-- <Modules class="MyAdd" /> -->
+        <Address :addressConfig='addressConfig' class="Address"/>
       </div>
       <div class="link">
-        <!-- <Modules class="OurLink" /> -->
+        <OurLink :linkConfig='linkConfig' class="OurLink"/>
       </div>
     </div>
     <!-- {this.state.switchin?<Switch type="enter" callback={this.switchOut.bind(this)}/>:''} -->
@@ -41,6 +40,9 @@ import Photo from './componets/photo'
 import Mail from './componets/mail'
 import Introduce from './componets/introduce'
 import Connect from './componets/connect'
+import Wechat from './componets/wechat'
+import Address from './componets/address'
+import OurLink from './componets/ourLink'
 import { aboutImg } from '@/components/imgurls'
 export default {
   name: 'about',
@@ -48,7 +50,10 @@ export default {
     Photo,
     Mail,
     Introduce,
-    Connect
+    Connect,
+    Wechat,
+    Address,
+    OurLink
   },
   data () {
     return {
@@ -87,6 +92,33 @@ export default {
         },
         show: true,
         img: aboutImg.igit
+      },
+      wechatConfig: {
+        modelConfig: {
+          title: 'Wechat',
+          style: 'wathet',
+          type: 'about'
+        },
+        show: true,
+        img: aboutImg.icode
+      },
+      addressConfig: {
+        modelConfig: {
+          title: 'Where',
+          style: 'wathet',
+          type: 'about'
+        },
+        show: true,
+        img: aboutImg.iadd
+      },
+      linkConfig: {
+        modelConfig: {
+          title: 'Where',
+          style: 'pink',
+          type: 'about'
+        },
+        show: true,
+        img: aboutImg.iadd
       }
     }
   },

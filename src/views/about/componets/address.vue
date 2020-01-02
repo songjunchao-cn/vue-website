@@ -3,21 +3,19 @@
       <div class='img'>
         <img :src='config.img' alt/>
       </div>
-      <h3>s305811415</h3>
-      <a href="https" rel="external" target="_blank" class='linkIcon'></a>
    </vue-modal>
 </template>
 
 <script>
 export default {
-  name: 'wecaht',
+  name: 'link',
   data () {
     return {
     }
   },
   computed: {
     config () {
-      return this.$attrs.wechatConfig
+      return this.$attrs.addressConfig
     }
   },
   methods: {}
