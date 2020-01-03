@@ -10,6 +10,7 @@
       <vue-modal v-model="readMeVisible" :config="readMeConfig">
         <ReadMe />
       </vue-modal>
+      <router-switch status='enter' @callback='switchOut' v-if="switchIn"></router-switch>
     </div>
   </main>
 </template>
@@ -21,6 +22,7 @@ import Footer from './components/footer/Footer'
 import MyIcon from '@/components/icons/Icons'
 import ReadMe from './components/readMe/readMe'
 import Sup from './components/sup/Sup'
+import routerSwitch from '@/components/switch/routerSwitch'
 import { homeIcon } from '@/components/imgurls'
 export default {
   name: 'home',
@@ -29,10 +31,17 @@ export default {
     MyIcon,
     ReadMe,
     Footer,
-    Sup
+    Sup,
+    routerSwitch
+  },
+  created () {
+    setTimeout(() => {
+      this.switchIn = true
+    }, 820)
   },
   data () {
     return {
+      switchIn: false,
       readMeVisible: false,
       supVisible: false,
       supConfig: {
@@ -87,6 +96,9 @@ export default {
     clickIcon (item) {
       // icons触发方法
       this[item + 'Visible'] = true
+    },
+    switchOut (n) {
+      this.switchIn = n
     }
   },
   watch: {

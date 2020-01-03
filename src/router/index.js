@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Root from '../views/root/root'
-import Home from '../views/home/home'
-import Blog from '../views/blog/blog'
-import Work from '../views/work/work'
-import About from '../views/about/about'
+const Root = () => import('../views/root/root')
+const Home = () => import('../views/home/home')
+const Blog = () => import('../views/blog/blog')
+const Work = () => import('../views/work/work')
+const About = () => import('../views/about/about')
 const notFind = () => import('../components/404/notFind')
 
 Vue.use(VueRouter)
