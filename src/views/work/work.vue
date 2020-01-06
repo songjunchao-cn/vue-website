@@ -7,7 +7,7 @@
         <span class="moreIcon">
           <i></i>
         </span>
-        <span class="needsclick">VIEW MORE</span>
+         <a @click="$router.push('about')">VIEW MORE</a>
       </div>
       <!-- {this.state.switchin?<Switch type="enter" callback={this.switchOut.bind(this)}/>:''} -->
     </div>

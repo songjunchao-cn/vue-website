@@ -9,7 +9,7 @@
       <li>Mr.S Personal Web</li>
       <li>v1.1.0</li>
       <li class="settLink">
-        <a class="needsclick" @click="toAbout">View More</a>
+        <a class="needsclick" @click="$router.push('about')">View More</a>
       </li>
       <li>
         <hr align="center" width="60%" style="margin:18px auto" color="#b99f51" size="1" />
@@ -31,16 +31,13 @@ export default {
   data () {
     return {
       user: {
-        name: '222'
+        name: 'sjc'
       }
     }
   },
   mounted () {
   },
   methods: {
-    toAbout () {
-
-    },
     login () {
 
     }

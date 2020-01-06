@@ -5,7 +5,7 @@
       <MyIcon :figures='figures' @clickIcon="clickIcon" />
       <Footer />
       <vue-modal v-model="supVisible" :config="supConfig">
-        <Sup />
+        <Sup :supNum='supNum'/>
       </vue-modal>
       <vue-modal v-model="readMeVisible" :config="readMeConfig">
         <ReadMe />
@@ -44,6 +44,8 @@ export default {
       switchIn: false,
       readMeVisible: false,
       supVisible: false,
+      supNum: Number(),
+      // modal配置
       supConfig: {
         title: '点赞',
         style: 'none',
@@ -54,39 +56,30 @@ export default {
         style: 'main',
         type: 'center'
       },
+      // 图标配置
       figures: [
         {
           src: homeIcon.sup,
           text: '点赞',
           isShow: false,
-          unmove: true,
-          label: 'sup'
-          // child: SupPug,
-          // type: 'none',
-          // add: {
-          //   num: 0,
-          //   upSup: this.upSup.bind(this) }
+          label: 'sup',
+          data: this.supData
         },
         {
           src: homeIcon.readme,
           text: '说明',
           label: 'readMe'
-          // isShow: false,
-          // child: ShowMe,
-          // type: 'main'
         },
         {
           src: homeIcon.msg,
           text: '留言',
           isShow: false,
-          // child: Msgs,
           type: 'wathet'
         },
         {
           src: homeIcon.setting,
           text: '设置',
           isShow: false,
-          // child: Setting,
           type: 'setting'
         }
       ]
@@ -95,7 +88,18 @@ export default {
   methods: {
     clickIcon (item) {
       // icons触发方法
-      this[item + 'Visible'] = true
+      this[item.label + 'Visible'] = true
+      if (item.label === 'sup') {
+        this.giveLike()
+      }
+    },
+    async giveLike () {
+      try {
+        let { data } = await this.$api.giveLikeApi()
+        this.supNum = data.data
+      } catch (err) {
+        console.log(err, 'giveLike Error')
+      }
     },
     switchOut (n) {
       this.switchIn = n
@@ -107,7 +111,7 @@ export default {
       if (value) {
         setTimeout(() => {
           this.supVisible = false
-        }, 3000)
+        }, 2000)
       }
     }
   }

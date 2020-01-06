@@ -44,7 +44,7 @@ export default {
   methods: {
     async getArticleList () {
       try {
-        const { data } = await this.$api.crosArticleApi()
+        let { data } = await this.$api.crosArticleApi()
         this.articleData = data
         this.currentArticle = data[0]
       } catch (err) {

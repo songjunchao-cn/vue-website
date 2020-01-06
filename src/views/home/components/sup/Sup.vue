@@ -4,7 +4,7 @@
     <div class="addSupNum">
       <h1>THANK U!</h1>
       <div :class="{'numSpan bright':bright,'numSpan':bright}">
-        {{num}}
+        {{this.$attrs.supNum}}
       </div>
     </div>
     <div ref="imgs">
@@ -24,7 +24,7 @@ export default {
   data () {
     return {
       bright: 'bright',
-      num: 1,
+      // num: this.$attrs.data,
       // gif序列18内取整数,用于堆放文件路径信息
       parrotsSrcs: [],
       // 存放位置信息
