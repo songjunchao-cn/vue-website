@@ -1,5 +1,4 @@
 <template>
-
     <ul class="settBox">
       <li>
         <div class="glitch">
@@ -22,7 +21,6 @@
         <em>{{user.name}}</em>
       </li>
     </ul>
-
 </template>
 
 <script>

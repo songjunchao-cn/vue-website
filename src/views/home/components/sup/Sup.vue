@@ -1,5 +1,4 @@
 <template>
-
   <div class="supBox">
     <div class="addSupNum">
       <h1>THANK U!</h1>

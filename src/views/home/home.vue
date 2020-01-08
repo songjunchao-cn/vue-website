@@ -12,6 +12,9 @@
       <vue-modal v-model="readMeVisible" :config="readMeConfig">
         <ReadMe />
       </vue-modal>
+      <vue-modal v-model="msgVisible" :config="msgMeConfig">
+        <Msg />
+      </vue-modal>
       <router-switch status='enter' @callback='switchOut' v-if="switchIn"></router-switch>
     </div>
   </main>
@@ -24,6 +27,7 @@ import Footer from './components/footer/Footer'
 import MyIcon from '@/components/icons/Icons'
 import ReadMe from './components/readMe/readMe'
 import Sup from './components/sup/Sup'
+import Msg from './components/msg/msg'
 import routerSwitch from '@/components/switch/routerSwitch'
 import { homeIcon } from '@/components/imgurls'
 export default {
@@ -34,6 +38,7 @@ export default {
     ReadMe,
     Footer,
     Sup,
+    Msg,
     routerSwitch
   },
   created () {
@@ -46,6 +51,7 @@ export default {
       switchIn: false,
       readMeVisible: false,
       supVisible: false,
+      msgVisible: false,
       supNum: Number(),
       // modal配置
       supConfig: {
@@ -55,6 +61,11 @@ export default {
       },
       readMeConfig: {
         title: '说明',
+        style: 'main',
+        type: 'center'
+      },
+      msgMeConfig: {
+        title: '留言',
         style: 'main',
         type: 'center'
       },
@@ -76,13 +87,15 @@ export default {
           src: homeIcon.msg,
           text: '留言',
           isShow: false,
-          type: 'wathet'
+          type: 'wathet',
+          label: 'msg'
         },
         {
           src: homeIcon.setting,
           text: '设置',
           isShow: false,
-          type: 'setting'
+          type: 'setting',
+          label: 'setting'
         }
       ]
     }
