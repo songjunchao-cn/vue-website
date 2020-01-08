@@ -1,9 +1,11 @@
 <template>
   <main class="home">
     <div class="app-center">
+      <!-- main -->
       <Word />
       <MyIcon :figures='figures' @clickIcon="clickIcon" />
       <Footer />
+      <!-- modal -->
       <vue-modal v-model="supVisible" :config="supConfig">
         <Sup :supNum='supNum'/>
       </vue-modal>

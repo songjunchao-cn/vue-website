@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     showItem (item) {
-      // 向上传递label值
+      // 向上传递item值
       this.$emit('clickIcon', item)
     }
   }
