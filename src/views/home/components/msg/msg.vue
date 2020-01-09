@@ -1,12 +1,12 @@
 <template>
   <div class="msgCenter">
     <div @scroll="onScroll" class="figure-pop-main">
-      <div class="loading-spinner" v-if="!onReset"></div>
+      <div class="loading-spinner" v-if="onReset"></div>
       <ul v-else ref="msgUl" class="msgBox">
         <main-msg v-for="item in msgData" :key="item.id" :msgItem='item'></main-msg>
         <!-- {this.state.msgs.map(msg => <Msg key={msg._id} {...msg}/>)} -->
       </ul>
-      <div style="textAlign:center;transform:translateY(-50px)">{this.state.moreText}</div>
+      <div style="textAlign:center;transform:translateY(-50px)">{{moreText}}</div>
     </div>
     <span
       v-if="!user.email"
@@ -33,15 +33,21 @@ export default {
       user: {
         eamil: 'sjc'
       },
-      msgData: [{ id: '5e09cc1d85ada5668b0c8291', msg: '湖人总冠军', name: 'lala', sup: 20 }]
+      onReset: false,
+      moreText: '继续',
+      msgData: []
     }
   },
+  created () {
+    this.getMsgList()
+  },
   methods: {
-    onReset () {
-
-    },
     toggleShow () {
 
+    },
+    async getMsgList () {
+      let { data } = await this.$api.getMsgListApi({ msgId: '1' })
+      this.msgData = data.data
     },
     onScroll (e) {
       console.log(e, 'e')
@@ -50,6 +56,6 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 @import './msg.scss'
 </style>

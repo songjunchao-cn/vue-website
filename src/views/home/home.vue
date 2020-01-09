@@ -66,7 +66,7 @@ export default {
       },
       msgMeConfig: {
         title: '留言',
-        style: 'main',
+        style: 'wathet',
         type: 'center'
       },
       // 图标配置

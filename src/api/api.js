@@ -27,6 +27,26 @@ export function getLikeApi () {
   return request(config)
 }
 
+// 获取留言信息
+
+export function getMsgListApi (params) {
+  const config = {
+    url: '/m/showMsg',
+    method: 'get',
+    params
+  }
+  return request(config)
+}
+
+export function upSupApi (data) {
+  const config = {
+    url: '/m/upSup',
+    method: 'post',
+    data
+  }
+  return request(config)
+}
+
 // 跨域外链
 export function crosArticleApi () {
   const config = {
