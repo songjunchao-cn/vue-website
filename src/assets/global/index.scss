@@ -3,7 +3,15 @@
 
 @import './blogdoll.scss'; //Blog暂用样式
 $color_black:#111111;
-$font_name: "LQXianEr","erikos","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+$font_name: "LQXianEr",
+"erikos",
+"Helvetica Neue",
+Helvetica,
+Arial,
+"Hiragino Sans GB",
+"Hiragino Sans GB W3",
+"WenQuanYi Micro Hei",
+sans-serif;
 $big_size:18px;
 $radius:18px;
 
@@ -272,44 +280,50 @@ body {
     position: fixed;
     z-index: 999;
     bottom: 0;
-    left: 0; 
+    left: 0;
   }
-  
+
   @mixin SwitchSpanInit {
     display: block;
     width: 100%;
-    height: calc(100% / 16) ;
-    background-color: $color_main;  
-    transition: 0.6s ease-in; 
+    height: calc(100% / 16);
+    background-color: $color_main;
+    transition: 0.6s ease-in;
   }
-  .switch-bg{
+
+  .switch-bg {
     @include SwitchDivInit();
     background-color: $color_main;
   }
-  .animate-enter{
+
+  .animate-enter {
     @include SwitchDivInit();
-    span{
+
+    span {
       @include SwitchSpanInit();
-      transform: scale(1,1.05);
-      transform-origin: right top;  
+      transform: scale(1, 1.05);
+      transform-origin: right top;
     }
-    span.active-enter{
-      transform: scale(0,1.05);
+
+    span.active-enter {
+      transform: scale(0, 1.05);
     }
   }
-  
-  .animate-leave{
+
+  .animate-leave {
     @include SwitchDivInit();
-    span{
+
+    span {
       @include SwitchSpanInit();
-      transform: scale(0,1.05);
-      transform-origin: left top;  
+      transform: scale(0, 1.05);
+      transform-origin: left top;
     }
-    span.active-leave{
-      transform: scale(1,1.05);
+
+    span.active-leave {
+      transform: scale(1, 1.05);
     }
-  } 
-  
+  }
+
   // icon
   .figure-flex {
     flex: 0 1 auto;
@@ -442,46 +456,190 @@ body {
     }
   }
 
-// pop style
-div[class*='figure-style-']{
-  border-radius: $radius;
-  border: $b_border;
-}
-.figure-style-wathet{
-  background-color: $color_wathet
-}
-.figure-style-vue{
-  background-color: $color_vue
-}
-.figure-style-pink{
-  background-color: $color_pink
-}
-.figure-style-violet{
-  background-color: $color_violet
-}
-.figure-style-white{
-  background-color: #fff;
-  &>p{
-    background-color: #d8dce3;
+  work-pop-main {
+    width: 80vw;
+    height: 80vh;
+    max-width: 1080px;
+    max-height: 80vh;
+    position: relative;
+    padding: 16px 16px 24px 16px;
+    text-align: center;
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, .3) !important
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #333;
+      background-color: $color_main;
+      margin-bottom: 1rem;
+      line-height: 3rem;
+    }
+
+    &>p {
+      margin: 1rem 0;
+      color: #666;
+      font-size: 1.2rem;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    &>h5 {
+      margin: 1rem 0;
+      color: #333;
+      font-size: 1.2rem;
+    }
+
+    &>strong {
+      position: relative;
+      color: #333;
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 16px;
+        height: 2px;
+        top: 50%;
+        background-color: #999;
+      }
+
+      &::before {
+        left: -24px;
+      }
+
+      &::after {
+        right: -24px;
+      }
+    }
   }
-}
-.figure-style-main{
-  background-color: $color_main
-}
-.figure-style-light{
-  background-color: #fffbf3
-}
-.figure-style-setting{
-  background-color: #e2e2e2
-}
-.figure-style-none{
-  top: 0;
-  left: 0;
-  border: none !important;
-  .close{
-    display: none;
+
+  .work-pop-code {
+    text-align: left;
+    font-family: $font;
+
+    &>h5,
+    &>p {
+      padding-left: 1rem;
+    }
+
+    &>h5 {
+      font-size: 1.6rem;
+      margin: 2rem 0 .5rem 0;
+    }
+
+    &>p {
+      margin: .4rem 0;
+    }
+
+    h1 {
+      background-color: #fff;
+      border-left: .3rem solid $color_main;
+      padding-left: .5rem;
+    }
   }
-}
+
+  .pop-link {
+    width: 100%;
+    height: 2.8rem;
+    padding-left: 1.6rem;
+    box-sizing: border-box;
+    border-left: .3rem solid $color_main;
+    background-color: #fff2cb;
+    margin-top: 1.4rem;
+
+    a {
+      line-height: 2.8rem;
+      font-size: 1.2rem;
+      color: #d4a921;
+      text-decoration: underline;
+    }
+  }
+
+  .work-list {
+    padding-left: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+
+    li {
+      padding: .4rem 0;
+
+      span {
+        padding: 4px 1rem;
+        background-color: #fff2cb;
+        font-weight: 400;
+        position: relative;
+        border-radius: calc(4px + .6rem);
+        color: #bd981e;
+      }
+    }
+  }
+
+  .loading-spinner {
+    position: absolute;
+    width: 104px;
+    bottom: 50%;
+    left: 50%;
+    height: 34px;
+    transform: translate(-50%, -50%);
+    background: url('http://cdn.toofook.com/my-blog/loading.gif') no-repeat center;
+  }
+
+  // pop style
+  div[class*='figure-style-'] {
+    border-radius: $radius;
+    border: $b_border;
+  }
+
+  .figure-style-wathet {
+    background-color: $color_wathet
+  }
+
+  .figure-style-vue {
+    background-color: $color_vue
+  }
+
+  .figure-style-pink {
+    background-color: $color_pink
+  }
+
+  .figure-style-violet {
+    background-color: $color_violet
+  }
+
+  .figure-style-white {
+    background-color: #fff;
+
+    &>p {
+      background-color: #d8dce3;
+    }
+  }
+
+  .figure-style-main {
+    background-color: $color_main
+  }
+
+  .figure-style-light {
+    background-color: #fffbf3
+  }
+
+  .figure-style-setting {
+    background-color: #e2e2e2
+  }
+
+  .figure-style-none {
+    top: 0;
+    left: 0;
+    border: none !important;
+
+    .close {
+      display: none;
+    }
+  }
 
   @keyframes figure-animate {
     0% {

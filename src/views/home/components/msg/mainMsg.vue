@@ -3,26 +3,33 @@
     <article class="msgTitle">
       <strong>{{$attrs.msgItem.name}}</strong>
       <span>{{timeData}}</span>
-      <span class="msgLight">
+      <span @click="upSup" class="msgLight">
         <!-- icon -->
-        <a @click="upSup"></a>
-       {{supData}}
+        <a></a>
+        {{supData}}
       </span>
     </article>
     <section class="message">{{$attrs.msgItem.msg}}</section>
-    <span class="bubble"></span>
+    <!-- <span class="bubble"></span> -->
+    <Bubble v-for="item in bubbles" :key="item.time" :bubbleItem="item" :bubbles.sync="bubbles" />
     <!-- {this.state.bubbles.map(bubble => <Bubble key={bubble.time} pro={bubble} out={this.outBubble.bind(this)}/>)} -->
   </li>
 </template>
 
 <script>
 
+import Bubble from './bubble'
 export default {
   name: 'mainMsg',
+  components: {
+    Bubble
+  },
   data () {
     return {
       timeData: new Date().getTime,
-      supData: this.$attrs.msgItem.sup
+      supData: this.$attrs.msgItem.sup,
+      bubbles: [],
+      upNum: 0
     }
   },
   created () {
@@ -36,12 +43,30 @@ export default {
     console.log(this.$attrs, 'attrs')
   },
   methods: {
-    async upSup () {
-      console.log(this.$attrs.msgItem, 'dd')
-      let { data } = this.$api.upSupApi({ msgId: this.$attrs.msgItem._id, upNum: '1' })
-      console.log(data)
-      // this.supData = data.data
+    upSup () {
+      this.supData++
+      this.upNum++
+      this.bubbles.push({
+        time: new Date().getTime() // 添加新的泡泡动画元素
+      })
+      clearTimeout(this.upSupTimeout)
+      this.upSupTimeout = setTimeout(() => {
+        this.upAxios()
+      }, 1000)
+      // 防抖，快速连续点击之后600毫秒才会提交连续点赞后的值
+    },
+    async upAxios () {
+      let { data } = await this.$api.upSupApi({
+        msgId: this.$attrs.msgItem._id,
+        upNum: this.upNum
+      })
+      if (data.status === 1) {
+        this.upNum = 0
+      }
     }
+  },
+  beforeDestroy () {
+    clearTimeout(this.upSupTimeout)
   }
 }
 </script>
