@@ -24,7 +24,7 @@ export default {
       type: Object,
       default () {
         return {
-          title: '',
+          title: '默认',
           style: 'main',
           type: 'center'
         }
