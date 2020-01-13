@@ -30,6 +30,7 @@ import Sup from './components/sup/Sup'
 import Msg from './components/msg/msg'
 import routerSwitch from '@/components/switch/routerSwitch'
 import { homeIcon } from '@/components/imgurls'
+import { setTimeout } from 'timers'
 export default {
   name: 'home',
   components: {
@@ -52,12 +53,14 @@ export default {
       readMeVisible: false,
       supVisible: false,
       msgVisible: false,
+      settingVisible: false,
       supNum: Number(),
       // modal配置
       supConfig: {
         title: '点赞',
         style: 'none',
-        type: 'center'
+        type: 'center',
+        animationName: 'bounce'
       },
       readMeConfig: {
         title: '说明',
@@ -103,9 +106,14 @@ export default {
   methods: {
     clickIcon (item) {
       // icons触发方法
-      this[item.label + 'Visible'] = true
       if (item.label === 'sup') {
+        this.readMeVisible = false
+        this.msgVisible = false
+        this.settingVisible = false
         this.giveLike()
+        setTimeout(() => { this[item.label + 'Visible'] = true }, 200)
+      } else {
+        this[item.label + 'Visible'] = true
       }
     },
     async giveLike () {

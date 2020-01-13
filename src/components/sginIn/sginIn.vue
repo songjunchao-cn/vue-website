@@ -1,28 +1,34 @@
 <template>
- <div class='sginDiv'>
-      <img :src="nameInput? homeImg.smile: homeImg.mail" alt=""/>
-      <h1>{{nameInput?'第一次来吧，取个名呗':'邮箱地址登陆'}}</h1>
-      <p>{{nameInput?'净化荧屏，世界和平。请勿使用敏感词汇':'邮箱地址是您的唯一标示，认真点啊'}}</p>
-      <div class='sginInput'>
-        <input type="text" :placeholder="nameInput?'请输入用户名':'请输入您的邮箱'" ref="inputer"/>
-        <button v-if="nameInput" :class="erro?'buttonAnimate':''" @click="getName">OK</button>
-        <button v-else :class="erro?'buttonAnimate':''" @click="getUser">OK</button>
-      </div>
-      <!-- <CSSTransition
+  <div class="sginDiv">
+    <img :src="nameInput? $imgUrls.homeImg.smile: $imgUrls.homeImg.mail" alt />
+    <h1>{{nameInput?'第一次来吧，取个名呗':'邮箱地址登陆'}}</h1>
+    <p>{{nameInput?'净化荧屏，世界和平。请勿使用敏感词汇':'邮箱地址是您的唯一标示，认真点啊'}}</p>
+    <div class="sginInput">
+      <input type="text" :placeholder="nameInput?'请输入用户名':'请输入您的邮箱'" ref="inputer" />
+      <button v-if="!nameInput" :class="erro?'buttonAnimate':''" @click="getUser">OK1</button>
+      <button v-else :class="erro?'buttonAnimate':''" @click="saveUser">OK2</button>
+    </div>
+    <!-- <CSSTransition
         in={this.state.erro}
           key='tests'
           timeout={200}
           unmountOnExit
-          classNames="fade"> -->
-      <div class='erroText'>{{erroText}}</div>
-      <!-- </CSSTransition> -->
-    </div>
+    classNames="fade">-->
+    <fade-transition animationName='bounce'>
+      <div v-if="erro" class="erroText">{{erroText}}</div>
+    </fade-transition>
+    <!-- </CSSTransition> -->
+  </div>
 </template>
 
 <script>
 import checkText from '@/utils/checkText'
+import fadeTransition from '@/components/transition/fadeTransition'
 export default {
   name: 'sginIn',
+  components: {
+    fadeTransition
+  },
   data () {
     return {
       email: null,
@@ -33,7 +39,7 @@ export default {
     }
   },
   methods: {
-    // 邮箱地址请求
+    // 1根据邮箱判断用户是否存在
     async getUser () {
       let dom = this.$refs.inputer
       if (this.erro) return false // 判断是否在执行错误提示的动画
@@ -46,7 +52,7 @@ export default {
           this.isOk(response.data.data.name, response.data.data.email)
         } else {
           this.nameInput = true
-          console.log(this.state.value)
+          console.log(this.value)
           this.email = value
           dom.value = ''
         }
@@ -55,10 +61,10 @@ export default {
         this.isErro()
       }
     },
-    // 获取用户名请求注册接口
-    async getName () {
+    // 2根据用户名保存用户
+    async saveUser () {
       let dom = this.$refs.inputer
-      if (this.state.erro) return false
+      if (this.erro) return false
       const value = dom.value.toString().replace(/<|>/g, ' ')
       if (!this.CheckTexts(value)) return this.upErro('禁止使用敏感词汇！')
       try {
@@ -67,11 +73,10 @@ export default {
         if (response.data.status === 1) {
           this.isOk(response.data.data.name, response.data.data.email)
         } else {
-          this.isErro()
+          console.log(response)
         }
       } catch (err) {
         console.log(err)
-        this.isErro()
       }
     },
     // 敏感词检测
@@ -99,5 +104,5 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-
+@import "./sginIn.scss";
 </style>

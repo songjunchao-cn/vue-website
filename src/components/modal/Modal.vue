@@ -1,5 +1,5 @@
 <template>
-  <fade-transition>
+  <fade-transition :animationName='config.animationName'>
     <div v-if="visible" :class="['figure-pop-'+config.type,'figure-style-'+config.style]">
       <p class="close">
         <a @click="close"></a>
@@ -26,7 +26,8 @@ export default {
         return {
           title: '默认',
           style: 'main',
-          type: 'center'
+          type: 'center',
+          animationName: 'fade'
         }
       }
     }

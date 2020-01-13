@@ -13,11 +13,11 @@
       <!-- onMouseDown={e => e.stopPropagation()} className={Css.msgInput} -->
       <input ref="msgInput" placeholder="净化荧屏，世界和平" type="text" />
       <span onClick="{this.messagesUp.bind(this)}" class="{Css.msgButton}">留言</span>
-       <Modal :loginConfig='loginConfig'>
-         <sgin-in></sgin-in>
-       <!-- <SginIn user={this.props.other.user} close={this.toggleShow.bind(this)} isErro={this.props.other.isErro} setUser={this.props.other.setUser}/> -->
-       </Modal>
     </div>
+    <vue-modal :config='sginInConfig' v-model="sginInVisable">
+      <sgin-in></sgin-in>
+       <!-- <SginIn user={this.props.other.user} close={this.toggleShow.bind(this)} isErro={this.props.other.isErro} setUser={this.props.other.setUser}/> -->
+    </vue-modal>
   </div>
 </template>
 
@@ -40,11 +40,12 @@ export default {
       loadAll: false,
       moreText: '',
       msgData: [],
-      loginConfig: {
+      sginInConfig: {
         title: '登录',
         style: 'white',
         type: 'center'
-      }
+      },
+      sginInVisable: false
     }
   },
   mounted () {
@@ -53,7 +54,7 @@ export default {
   },
   methods: {
     toggleShow () {
-
+      this.sginInVisable = true
     },
     async getMsgList () {
       let { data } = await this.$api.getMsgListApi({ msgId: '1' })
