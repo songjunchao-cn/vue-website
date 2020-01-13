@@ -1,6 +1,6 @@
 import request from '../request/request'
 
-// 用户信息
+// 获取用户信息
 export function getUserApi (params) {
   const config = {
     url: '/u/getUser',
@@ -10,6 +10,15 @@ export function getUserApi (params) {
   return request(config)
 }
 
+// 保存用户信息
+export function saveUserApi (data) {
+  const config = {
+    url: '/u/saveUser',
+    method: 'post',
+    data
+  }
+  return request(config)
+}
 // 点赞信息
 export function giveLikeApi () {
   const config = {

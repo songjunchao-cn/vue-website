@@ -2,9 +2,9 @@
   <div class="msgCenter">
     <div @scroll="onScroll" class="figure-pop-main">
       <div class="loading-spinner" v-if="onReset"></div>
+      <!-- msg列表 -->
       <ul v-else ref="msgUl" class="msgBox">
         <main-msg v-for="item in msgData" :key="item.id" :msgItem="item"></main-msg>
-        <!-- {this.state.msgs.map(msg => <Msg key={msg._id} {...msg}/>)} -->
       </ul>
       <div style="textAlign:center;transform:translateY(-50px)">{{moreText}}</div>
     </div>
@@ -13,16 +13,22 @@
       <!-- onMouseDown={e => e.stopPropagation()} className={Css.msgInput} -->
       <input ref="msgInput" placeholder="净化荧屏，世界和平" type="text" />
       <span onClick="{this.messagesUp.bind(this)}" class="{Css.msgButton}">留言</span>
+       <Modal :loginConfig='loginConfig'>
+         <sgin-in></sgin-in>
+       <!-- <SginIn user={this.props.other.user} close={this.toggleShow.bind(this)} isErro={this.props.other.isErro} setUser={this.props.other.setUser}/> -->
+       </Modal>
     </div>
   </div>
 </template>
 
 <script>
 import mainMsg from './mainMsg'
+import sginIn from '@/components/sginIn/sginIn'
 export default {
   name: 'msg',
   components: {
-    mainMsg
+    mainMsg,
+    sginIn
   },
   data () {
     return {
@@ -33,7 +39,12 @@ export default {
       onLoad: false,
       loadAll: false,
       moreText: '',
-      msgData: []
+      msgData: [],
+      loginConfig: {
+        title: '登录',
+        style: 'white',
+        type: 'center'
+      }
     }
   },
   mounted () {
