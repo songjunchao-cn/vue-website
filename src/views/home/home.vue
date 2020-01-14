@@ -3,11 +3,11 @@
     <div class="app-center">
       <!-- main -->
       <Word />
-      <MyIcon :figures='figures' @clickIcon="clickIcon" />
+      <MyIcon :figures="figures" @clickIcon="clickIcon" />
       <Footer />
       <!-- modal -->
       <vue-modal v-model="supVisible" :config="supConfig">
-        <Sup :supNum='supNum'/>
+        <Sup :supNum="supNum" />
       </vue-modal>
       <vue-modal v-model="readMeVisible" :config="readMeConfig">
         <ReadMe />
@@ -15,7 +15,10 @@
       <vue-modal v-model="msgVisible" :config="msgMeConfig">
         <Msg />
       </vue-modal>
-      <router-switch status='enter' @callback='switchOut' v-if="switchIn"></router-switch>
+      <vue-modal v-model="settingVisible" :config="settingConfig">
+        <Setting />
+      </vue-modal>
+      <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
     </div>
   </main>
 </template>
@@ -28,6 +31,7 @@ import MyIcon from '@/components/icons/Icons'
 import ReadMe from './components/readMe/readMe'
 import Sup from './components/sup/Sup'
 import Msg from './components/msg/msg'
+import Setting from './components/setting/setting'
 import routerSwitch from '@/components/switch/routerSwitch'
 import { homeIcon } from '@/components/imgurls'
 import { setTimeout } from 'timers'
@@ -40,6 +44,7 @@ export default {
     Footer,
     Sup,
     Msg,
+    Setting,
     routerSwitch
   },
   created () {
@@ -50,6 +55,8 @@ export default {
   data () {
     return {
       switchIn: false,
+      // 互斥的modal
+      allVisible: ['readMeVisible', 'supVisible', 'msgVisible', 'settingVisible'],
       readMeVisible: false,
       supVisible: false,
       msgVisible: false,
@@ -69,6 +76,11 @@ export default {
       },
       msgMeConfig: {
         title: '留言',
+        style: 'wathet',
+        type: 'center'
+      },
+      settingConfig: {
+        title: '设置',
         style: 'wathet',
         type: 'center'
       },
@@ -106,18 +118,26 @@ export default {
   methods: {
     clickIcon (item) {
       // icons触发方法
-      if (item.label === 'sup') {
-        this.readMeVisible = false
-        this.msgVisible = false
-        this.settingVisible = false
-        this.giveLike()
-        setTimeout(() => { this[item.label + 'Visible'] = true }, 200)
-      } else {
+      this.allVisible.forEach(element => {
+        if (!(item.label + 'Visible' === element)) {
+          this[element] = false
+        }
+      })
+
+      if (item.label === 'sup') this.giveLike()
+      this.$nextTick(() => {
         this[item.label + 'Visible'] = true
-      }
+      })
     },
+    //  async本质为generator函数语法糖，通过yied进行协程控制
     async giveLike () {
       try {
+        // 遇到await先返回，等待异步操作执行完成，然会执行后面的语句\
+        // promise回调，MutationObserver，process.nextTick，Object.observe
+        // XHR回调，定时器（setTimeout/setInterval/setImmediate），IO操作，UI render
+        // nextTick通过promise实现延迟调用回调函数，
+        // axios通过promise实现,XHR为宏任务最后执行，
+        // 执行完成后axios返回promise对象
         let { data } = await this.$api.giveLikeApi()
         this.supNum = data.data
       } catch (err) {
@@ -142,5 +162,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './home.scss'
+@import "./home.scss";
 </style>

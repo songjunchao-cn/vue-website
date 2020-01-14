@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div id="root" class="root">
     <Header/>
     <router-view></router-view>
     <router-switch @callback='clearAnimate' status='leave' v-if="isRouter"/>

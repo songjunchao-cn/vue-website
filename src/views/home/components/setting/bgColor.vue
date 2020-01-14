@@ -26,7 +26,7 @@ export default {
         { value: 'black-bg',
           isChoose: false
         },
-        { value: 'colour-bg',
+        { value: 'color-bg',
           isChoose: false
         },
         { value: 'grid-bg',
@@ -69,5 +69,5 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 </style>
