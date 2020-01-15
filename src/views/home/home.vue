@@ -150,7 +150,7 @@ export default {
   },
   watch: {
     supVisible (value) {
-      // 3秒后自动关闭
+      // 2秒后自动关闭
       if (value) {
         setTimeout(() => {
           this.supVisible = false

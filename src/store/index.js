@@ -6,13 +6,12 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     userObj: {
-      name: '',
-      email: null
     }
   },
   mutations: {
-    initUser (state, userObj) {
-      state.userObj = userObj
+    initUser (state) {
+      let formatData = JSON.parse(sessionStorage.getItem('userObj'))
+      state.userObj = formatData || {}
     }
   },
   actions: {

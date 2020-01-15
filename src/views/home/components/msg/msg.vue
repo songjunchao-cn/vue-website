@@ -11,8 +11,8 @@
     <span v-if="!userObj.email" @click="toggleShow" class="putButton">留言</span>
     <div class="msgInput" v-else>
       <!-- onMouseDown={e => e.stopPropagation()} className={Css.msgInput} -->
-      <input ref="msgInput" placeholder="净化荧屏，世界和平" type="text" />
-      <span class="msgButton" @click="msgUp">留言</span>
+      <input v-model="message" ref="msgInput" placeholder="净化荧屏，世界和平" type="text" />
+      <span class="msgButton" @click="saveMsg">留言</span>
     </div>
     <vue-modal :config='sginInConfig' v-model="sginInVisable">
       <sgin-in></sgin-in>
@@ -24,6 +24,7 @@
 <script>
 import mainMsg from './mainMsg'
 import sginIn from '@/components/sginIn/sginIn'
+import checkText from '@/utils/checkText'
 export default {
   name: 'msg',
   components: {
@@ -37,12 +38,14 @@ export default {
       loadAll: false,
       moreText: '',
       msgData: [],
+      message: '',
       sginInConfig: {
         title: '登录',
         style: 'white',
         type: 'center'
       },
-      sginInVisable: false
+      sginInVisable: false,
+      checkText
     }
   },
   mounted () {
@@ -105,10 +108,44 @@ export default {
     },
     reload () {
       this.onReset = true
+      this.$store.commit('initUser')
     },
-    msgUp () {
-
+    async saveMsg () {
+      this.loadAll = false
+      let message = this.CheckTexts(this.message)
+      if (message.replace(/\s+/g, '') === '') return // 如果输入的全是空格，则不提交
+      let params = {
+        email: this.userObj.email,
+        message
+      }
+      try {
+        let response = await this.$api.saveMsgApi(params)
+        if (response.data.status === 1) {
+          this.reload()
+          this.message = ''
+          this.restTimeout = setTimeout(() => {
+            this.getMsgList()
+          }, 800)
+        } else {
+          console.log(response)
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    CheckTexts (str) {
+      let _str = str.toString().replace(/<|>/g, ' ')
+      let reg = ''
+      this.checkText.map(i => {
+        reg = new RegExp(i, 'g')
+        _str = _str.replace(reg, '河蟹')
+      })
+      return _str
     }
+  },
+  beforeDestroy () {
+    clearTimeout(this.restTimeout)
+    clearTimeout(this.loadTimeout)
   }
 }
 </script>

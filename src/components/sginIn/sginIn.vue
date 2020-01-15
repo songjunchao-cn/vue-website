@@ -8,16 +8,9 @@
       <button v-if="!nameInput" :class="erro?'buttonAnimate':''" @click="getUser">OK1</button>
       <button v-else :class="erro?'buttonAnimate':''" @click="saveUser">OK2</button>
     </div>
-    <!-- <CSSTransition
-        in={this.state.erro}
-          key='tests'
-          timeout={200}
-          unmountOnExit
-    classNames="fade">-->
     <fade-transition animationName='bounce'>
       <div v-if="erro" class="erroText">{{erroText}}</div>
     </fade-transition>
-    <!-- </CSSTransition> -->
   </div>
 </template>
 
@@ -52,7 +45,6 @@ export default {
           this.isOk(response.data.data.name, response.data.data.email, response.data.data)
         } else {
           this.nameInput = true
-          console.log(this.value)
           this.email = value
           dom.value = ''
         }
@@ -90,7 +82,8 @@ export default {
     isOk (name, email, userObj) {
       this.name = name
       this.email = email
-      this.$store.commit('initUser', userObj)
+      sessionStorage.setItem('userObj', JSON.stringify(userObj))
+      this.$store.commit('initUser')
     },
     upErro (text) {
       this.erro = true

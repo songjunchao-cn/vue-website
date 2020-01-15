@@ -28,6 +28,7 @@ export function giveLikeApi () {
   return request(config)
 }
 
+// 获取点赞数
 export function getLikeApi () {
   const config = {
     url: '/u/showSup',
@@ -37,7 +38,6 @@ export function getLikeApi () {
 }
 
 // 获取留言信息
-
 export function getMsgListApi (params) {
   const config = {
     url: '/m/showMsg',
@@ -46,7 +46,15 @@ export function getMsgListApi (params) {
   }
   return request(config)
 }
-
+export function saveMsgApi (data) {
+  const config = {
+    url: '/m/saveMsg',
+    method: 'post',
+    data
+  }
+  return request(config)
+}
+// 获取留言点赞数
 export function upSupApi (data) {
   const config = {
     url: '/m/upSup',
