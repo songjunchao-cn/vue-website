@@ -3,18 +3,18 @@
     <p>background</p>
     <bg-color></bg-color>
     <p style="margin-top:1.8rem">choose filter</p>
-    <Filter/>
+    <filterColor/>
   </div>
 </template>
 
 <script>
 import bgColor from './bgColor.vue'
-import Filter from './filter'
+import filterColor from './filterColor'
 export default {
   name: 'setting',
   components: {
     bgColor,
-    Filter
+    filterColor
   },
   data () {
     return {
