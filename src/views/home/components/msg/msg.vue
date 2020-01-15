@@ -8,11 +8,11 @@
       </ul>
       <div style="textAlign:center;transform:translateY(-50px)">{{moreText}}</div>
     </div>
-    <span v-if="!user.email" @click="toggleShow" class="putButton">留言</span>
-    <div v-else>
+    <span v-if="!userObj.email" @click="toggleShow" class="putButton">留言</span>
+    <div class="msgInput" v-else>
       <!-- onMouseDown={e => e.stopPropagation()} className={Css.msgInput} -->
       <input ref="msgInput" placeholder="净化荧屏，世界和平" type="text" />
-      <span onClick="{this.messagesUp.bind(this)}" class="{Css.msgButton}">留言</span>
+      <span class="msgButton" @click="msgUp">留言</span>
     </div>
     <vue-modal :config='sginInConfig' v-model="sginInVisable">
       <sgin-in></sgin-in>
@@ -32,9 +32,6 @@ export default {
   },
   data () {
     return {
-      user: {
-        eamil: 'sjc'
-      },
       onReset: false,
       onLoad: false,
       loadAll: false,
@@ -51,6 +48,19 @@ export default {
   mounted () {
     this.reload()
     this.getMsgList()
+    console.log(this.$store.state.userObj, 'store')
+  },
+  computed: {
+    userObj () {
+      return this.$store.state.userObj
+    }
+  },
+  watch: {
+    'userObj.email': {
+      handler: function (val) {
+        if (val) this.sginInVisable = false
+      }
+    }
   },
   methods: {
     toggleShow () {
@@ -95,6 +105,9 @@ export default {
     },
     reload () {
       this.onReset = true
+    },
+    msgUp () {
+
     }
   }
 }

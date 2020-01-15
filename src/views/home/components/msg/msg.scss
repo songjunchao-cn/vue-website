@@ -80,7 +80,7 @@ $msg_t_color: #055559;
 .putButton{
     @include button();
     position: fixed;
-    bottom: -76px;
+    bottom: -90px;
     left: 50%;
     transform: translateX(-50%);
 }

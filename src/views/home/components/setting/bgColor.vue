@@ -55,7 +55,7 @@ export default {
     bgChoose (item) {
       const _index = this.colors.indexOf(item)
       this.colorChoose(_index)
-      document.getElementById('root').className = this.colors[_index].value
+      document.getElementById('root').className = `root ${this.colors[_index].value}`
     },
     colorChoose (index) {
       this.colors = this.colors.filter((c, i) => {

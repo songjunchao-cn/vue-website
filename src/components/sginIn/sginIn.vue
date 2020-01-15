@@ -49,7 +49,7 @@ export default {
       try {
         let response = await this.$api.getUserApi({ email: value })
         if (response.data.status === 1) {
-          this.isOk(response.data.data.name, response.data.data.email)
+          this.isOk(response.data.data.name, response.data.data.email, response.data.data)
         } else {
           this.nameInput = true
           console.log(this.value)
@@ -71,7 +71,7 @@ export default {
         let params = { email: this.email, name: value }
         let response = await this.$api.saveUserApi(params)
         if (response.data.status === 1) {
-          this.isOk(response.data.data.name, response.data.data.email)
+          this.isOk(response.data.data.name, response.data.data.email, response.data.data)
         } else {
           console.log(response)
         }
@@ -87,9 +87,10 @@ export default {
       return true
     },
     // 注册或登陆成功，将保存用户名和email账号
-    isOk (name, email) {
+    isOk (name, email, userObj) {
       this.name = name
       this.email = email
+      this.$store.commit('initUser', userObj)
     },
     upErro (text) {
       this.erro = true
