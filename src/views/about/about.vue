@@ -31,7 +31,7 @@
         <OurLink :linkConfig='linkConfig' class="OurLink"/>
       </div>
     </div>
-    <!-- {this.state.switchin?<Switch type="enter" callback={this.switchOut.bind(this)}/>:''} -->
+    <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
   </main>
 </template>
 
@@ -44,6 +44,7 @@ import Wechat from './componets/wechat'
 import Address from './componets/address'
 import OurLink from './componets/ourLink'
 import { aboutImg } from '@/components/imgurls'
+import routerSwitch from '@/components/switch/routerSwitch'
 export default {
   name: 'about',
   components: {
@@ -53,7 +54,8 @@ export default {
     Connect,
     Wechat,
     Address,
-    OurLink
+    OurLink,
+    routerSwitch
   },
   data () {
     return {
@@ -119,10 +121,20 @@ export default {
         },
         show: true,
         img: aboutImg.iadd
-      }
+      },
+      switchIn: false
     }
   },
-  methods: {}
+  mounted () {
+    setTimeout(() => {
+      this.switchIn = true
+    }, 820)
+  },
+  methods: {
+    switchOut (n) {
+      this.switchIn = n
+    }
+  }
 }
 </script>
 

@@ -5,7 +5,6 @@
       <Word />
       <MyIcon :figures="figures" @clickIcon="clickIcon" />
       <Footer />
-      <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
     </div>
      <!-- modal -->
      <vue-modal v-model="supVisible" :config="supConfig">
@@ -20,6 +19,7 @@
       <vue-modal v-model="settingVisible" :config="settingConfig">
         <Setting />
       </vue-modal>
+        <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
   </main>
 </template>
 

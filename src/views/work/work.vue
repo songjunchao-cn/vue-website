@@ -9,18 +9,20 @@
         </span>
          <a @click="$router.push('about')">VIEW MORE</a>
       </div>
-      <!-- {this.state.switchin?<Switch type="enter" callback={this.switchOut.bind(this)}/>:''} -->
     </div>
+    <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
   </main>
 </template>
 
 <script>
 import ListComponent from './components/listComponent/listComponent'
 import { workIcon } from '@/components/imgurls'
+import routerSwitch from '@/components/switch/routerSwitch'
 export default {
   name: 'work',
   components: {
-    ListComponent
+    ListComponent,
+    routerSwitch
   },
   data () {
     return {
@@ -37,12 +39,21 @@ export default {
         { src: workIcon.chick, text: '老思鸡H5', isShow: false, type: 'white' },
         { src: workIcon.vue, text: 'vue-pictring', isShow: false, type: 'white' },
         { src: workIcon.blog, text: 'My Blog', isShow: false, type: 'white' }
-      ]
+      ],
+      switchIn: false
     }
+  },
+  created () {
+    setTimeout(() => {
+      this.switchIn = true
+    }, 820)
   },
   methods: {
     toAbout () {
 
+    },
+    switchOut (n) {
+      this.switchIn = n
     }
   }
 }

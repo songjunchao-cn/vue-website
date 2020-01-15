@@ -8,17 +8,20 @@
           <Article :currentArticle="currentArticle" />
         </vue-modal>
     </div>
+      <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
   </div>
 </template>
 
 <script>
 import Menu from './components/menu/Menu'
 import Article from './components/article/Article'
+import routerSwitch from '@/components/switch/routerSwitch'
 export default {
   name: 'blog',
   components: {
     Menu,
-    Article
+    Article,
+    routerSwitch
   },
   data () {
     return {
@@ -33,10 +36,14 @@ export default {
         title: 'Blogs',
         style: 'white',
         type: 'about'
-      }
+      },
+      switchIn: false
     }
   },
   created () {
+    setTimeout(() => {
+      this.switchIn = true
+    }, 820)
     this.getArticleList()
   },
   mounted () {
@@ -53,6 +60,9 @@ export default {
     },
     getCurrentArticle (currentArticle) {
       this.currentArticle = currentArticle
+    },
+    switchOut (n) {
+      this.switchIn = n
     }
   },
   computed: {
