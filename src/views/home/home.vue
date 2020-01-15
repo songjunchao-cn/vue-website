@@ -5,8 +5,10 @@
       <Word />
       <MyIcon :figures="figures" @clickIcon="clickIcon" />
       <Footer />
-      <!-- modal -->
-      <vue-modal v-model="supVisible" :config="supConfig">
+      <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
+    </div>
+     <!-- modal -->
+     <vue-modal v-model="supVisible" :config="supConfig">
         <Sup :supNum="supNum" />
       </vue-modal>
       <vue-modal v-model="readMeVisible" :config="readMeConfig">
@@ -18,8 +20,6 @@
       <vue-modal v-model="settingVisible" :config="settingConfig">
         <Setting />
       </vue-modal>
-      <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
-    </div>
   </main>
 </template>
 
