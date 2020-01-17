@@ -24,7 +24,7 @@
 <script>
 import CommentInput from '../input/Input'
 import CommentsList from '../commentsList/commentsList'
-import { CancelToken } from 'axios'
+// import { CancelToken } from 'axios'\
 export default {
   name: 'comments',
   inheritAttrs: false,
@@ -41,12 +41,12 @@ export default {
   },
   methods: {
     async getArticleComments (dataInfo) {
-      this.getCommentsCancel()
+      // this.getCommentsCancel()
       const { data = [] } = await this.axios({
         url: `${dataInfo.url}/comments?time=${Date.now()}`,
-        cancelToken: new CancelToken((c) => {
-          this.getCommentsCancel = c
-        }),
+        // cancelToken: new CancelToken((c) => {
+        //   this.getCommentsCancel = c
+        // }),
         headers: {
           'Accept': 'application/vnd.github.squirrel-girl-preview+json'
         }

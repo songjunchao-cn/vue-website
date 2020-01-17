@@ -36,7 +36,6 @@ export default {
     fadeTransition
   },
   mounted () {
-    console.log(this.config, 'config')
   },
   data () {
     return {

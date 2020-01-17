@@ -39,7 +39,6 @@ export default {
   beforeMount () {},
   mounted () {
     setInterval(this.getTimeNow, 1000)
-    console.log(this.$route)
   },
   computed: {
     formatTime () {
