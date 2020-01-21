@@ -4,7 +4,6 @@
         <img :src='config.img' alt/>
       </div>
       <h3>s305811415</h3>
-      <a href="https" rel="external" target="_blank" class='linkIcon'></a>
    </vue-modal>
 </template>
 

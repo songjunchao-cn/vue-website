@@ -6,12 +6,14 @@ import Modal from './components/modal/export'
 import axios from 'axios'
 import * as imgUrls from './components/imgurls'
 import * as api from './api/api'
+import { dateFormat } from '@/utils/format.js'
 import './assets/global/init.scss'
 import './assets/global/index.scss'
 
 Vue.config.productionTip = false
 Vue.prototype.$imgUrls = imgUrls
 Vue.prototype.$api = api
+Vue.prototype.$dateFormat = dateFormat
 Vue.use(Modal, axios)
 
 new Vue({

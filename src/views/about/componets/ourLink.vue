@@ -17,10 +17,10 @@ export default {
   data () {
     return {
       friends: [
-        { link: 'https://www.zcool.com.cn/u/13292809', name: '杰神', title: '设计圈张国荣' },
-        { link: 'http://fxyblog.com/', name: 'Apple', title: '前端大佬' },
-        { link: 'https://dribbble.com/-Nancy', name: '木木夕', title: '美女插画师' },
-        { link: 'https://github.com/liangmeie', name: '娥妹子', title: '前端程序媛' }]
+        { link: 'https://cn.vuejs.org', name: 'VUE', title: '易用 灵活 高效' },
+        { link: 'https://reactjs.org', name: 'React', title: '声明式 组件化' },
+        { link: 'https://nodejs.orgz', name: 'NodeJs', title: '事件驱动' },
+        { link: 'https://koa.bootcss.com', name: 'Koa', title: '小而优雅' }]
     }
   },
   computed: {

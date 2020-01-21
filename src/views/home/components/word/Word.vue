@@ -2,7 +2,7 @@
   <div class="word">
     <span :class="wordState.in?'animate':''">Hey There</span>
     <br />
-    <span :class="wordState.middle?'animate':''">I'm </span>
+    <span :class="wordState.middle?'animate':''">I'm SJC</span>
     <br />
     <span :class="wordState.out?'animate':''">
       ( σ'ω')σ

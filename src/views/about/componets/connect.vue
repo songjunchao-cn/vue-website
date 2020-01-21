@@ -3,16 +3,18 @@
       <div class='img'>
         <img :src='config.img' alt/>
       </div>
-      <h3>1111</h3>
-      <a href="https" rel="external" target="_blank" class='linkIcon'></a>
+      <h3>13216127918</h3>
+      <a v-if="isPhone" href="13216127918" class='linkIcon'></a>
    </vue-modal>
 </template>
 
 <script>
+import isPhone from '@/utils/isPhone'
 export default {
   name: 'connect',
   data () {
     return {
+      isPhone
     }
   },
   computed: {

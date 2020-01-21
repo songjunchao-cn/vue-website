@@ -3,7 +3,7 @@
     <section class="reaction-box">
       <div class="reaction-up" @click="upActiveItem">
         <i></i>
-        <span>{UpItems.length}</span>
+        <span>{upNum.length}</span>
       </div>
       <div class="reaction-like" @click="likeActiveItem">
         <i></i>
@@ -24,7 +24,6 @@
 <script>
 import CommentInput from '../input/Input'
 import CommentsList from '../commentsList/commentsList'
-// import { CancelToken } from 'axios'\
 export default {
   name: 'comments',
   inheritAttrs: false,

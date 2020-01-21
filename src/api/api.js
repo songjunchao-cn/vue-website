@@ -64,10 +64,17 @@ export function upSupApi (data) {
   return request(config)
 }
 
-// 跨域外链
-export function crosArticleApi () {
+export function getBlogListApi () {
   const config = {
-    url: 'https://api.github.com/repos/ArthurYung/my-voice/issues'
+    url: '/b/showBlog',
+    method: 'get'
   }
   return request(config)
 }
+// 跨域外链
+// export function crosArticleApi () {
+//   const config = {
+//     url: 'https://api.github.com/issues'
+//   }
+//   return request(config)
+// }

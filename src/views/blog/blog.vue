@@ -51,9 +51,9 @@ export default {
   methods: {
     async getArticleList () {
       try {
-        let { data } = await this.$api.crosArticleApi()
-        this.articleData = data
-        this.currentArticle = data[0]
+        let { data } = await this.$api.getBlogListApi()
+        this.articleData = data.data
+        this.currentArticle = data.data[0]
       } catch (err) {
         console.log(err, 'err')
       }

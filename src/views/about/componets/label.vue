@@ -1,6 +1,5 @@
 <template>
   <div class='mylabel'>
-<!-- <Cloud key={i} text={t} index={i}/> -->
    <Cloud v-bind="$attrs" v-for="(item,index) in labels" :key="item" :index='index' :text='item'/>
   </div>
 </template>
@@ -19,7 +18,7 @@ export default {
         '#90后',
         '#前端新秀',
         '#闷骚',
-        '[diss]',
+        '#猫奴',
         '#伪文艺'
       ]
     }

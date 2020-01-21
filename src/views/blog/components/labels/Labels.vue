@@ -2,10 +2,10 @@
   <span>
     <a
       v-for="element in labels"
-      :key="element.id"
+      :key="element"
       :class="lableCss"
-      :style="'color:#'+`${element.color}`"
-    >{{element.name}}</a>
+      :style="'color:'+`${tranColor(element)}`"
+    >{{element}}</a>
   </span>
 </template>
 
@@ -25,7 +25,15 @@ export default {
       lableCss: 'blog-menu-label'
     }
   },
-  methods: {}
+  methods: {
+    tranColor (name) {
+      var str = ''
+      for (var i = 0; i < name.length; i++) {
+        str += parseInt(name[i].charCodeAt(0), 10).toString(16)
+      }
+      return '#' + str.slice(1, 4)
+    }
+  }
 }
 </script>
 

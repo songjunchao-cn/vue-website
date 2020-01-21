@@ -3,8 +3,8 @@
     <div class="img">
       <img :src="config.img" alt />
     </div>
-    <h3>sjc@foxmail.com</h3>
-    <a href="mailto:arthur.ou@foxmail.com" class="linkIcon"></a>
+    <h3>songjunchao.cn@gmail.com</h3>
+    <a href="songjunchao.cn@gmail.com" class="linkIcon"></a>
   </vue-modal>
 </template>
 
