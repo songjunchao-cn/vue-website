@@ -1,10 +1,11 @@
 <template>
    <div class='comment-item'>
-      <!-- <span class='comment-item-img' :style="'backgroundImage:'+ `url('${user.avatar_url}')`" /> -->
+     <!-- 在js和template中引入图片资源需要使用require -->
+      <span class='comment-item-img' :style="'backgroundImage:url(' + require('@/assets/images/user.jpg') + ')'" />
       <div class='comment-item-box'>
         <div class='comment-item-context'>
-          <h3>{{$attrs.currentArticle.user.type}}<span>{{$attrs.currentArticle.created_at}}</span></h3>
-          <article>body</article>
+          <h3>{{$attrs.cmtItem.user}}<span>{{$dateFormat($attrs.cmtItem.time,'yyyy-MM-dd hh:mm')}}</span></h3>
+          <article>{{$attrs.cmtItem.content}}</article>
         </div>
       </div>
     </div>
@@ -18,9 +19,10 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$attrs, 'bb')
   },
-  methods: {}
+  methods: {
+
+  }
 }
 </script>
 

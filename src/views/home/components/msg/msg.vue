@@ -16,7 +16,6 @@
     </div>
     <vue-modal :config='sginInConfig' v-model="sginInVisable">
       <sgin-in></sgin-in>
-       <!-- <SginIn user={this.props.other.user} close={this.toggleShow.bind(this)} isErro={this.props.other.isErro} setUser={this.props.other.setUser}/> -->
     </vue-modal>
   </div>
 </template>
@@ -51,7 +50,6 @@ export default {
   mounted () {
     this.reload()
     this.getMsgList()
-    console.log(this.$store.state.userObj, 'store')
   },
   computed: {
     userObj () {

@@ -5,9 +5,12 @@
           <Menu @getCurrentArticle='getCurrentArticle' :articleData="articleData" />
         </vue-modal>
         <vue-modal class="blog-article-box" v-model="articleVisible" :config="articleConfig">
-          <Article :currentArticle="currentArticle" />
+          <Article @changeVisible='changeVisible' :currentArticle="currentArticle" />
         </vue-modal>
     </div>
+     <vue-modal :config='sginInConfig' v-model="sginInVisable">
+      <sgin-in></sgin-in>
+    </vue-modal>
       <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
   </div>
 </template>
@@ -15,12 +18,14 @@
 <script>
 import Menu from './components/menu/Menu'
 import Article from './components/article/Article'
+import sginIn from '@/components/sginIn/sginIn'
 import routerSwitch from '@/components/switch/routerSwitch'
 export default {
   name: 'blog',
   components: {
     Menu,
     Article,
+    sginIn,
     routerSwitch
   },
   data () {
@@ -37,6 +42,12 @@ export default {
         style: 'white',
         type: 'about'
       },
+      sginInConfig: {
+        title: '登录',
+        style: 'white',
+        type: 'center'
+      },
+      sginInVisable: false,
       switchIn: false
     }
   },
@@ -47,6 +58,13 @@ export default {
     this.getArticleList()
   },
   mounted () {
+  },
+  watch: {
+    'userObj.email': {
+      handler: function (val) {
+        if (val) this.sginInVisable = false
+      }
+    }
   },
   methods: {
     async getArticleList () {
@@ -61,6 +79,9 @@ export default {
     getCurrentArticle (currentArticle) {
       this.currentArticle = currentArticle
     },
+    changeVisible () {
+      this.sginInVisable = true
+    },
     switchOut (n) {
       this.switchIn = n
     }
@@ -71,6 +92,9 @@ export default {
     },
     articleVisible () {
       return Object.values(this.currentArticle).length > 0
+    },
+    userObj () {
+      return this.$store.state.userObj
     }
   }
 }

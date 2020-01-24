@@ -1,9 +1,13 @@
 <template>
-   <vue-modal v-model="config.show" :config="config.modelConfig">
-      <div class='img'>
+  <vue-modal v-model="config.show" :config="config.modelConfig">
+    <!-- <div class='img'>
         <img :src='config.img' alt/>
-      </div>
-   </vue-modal>
+    </div>-->
+    <div class="where">
+      <span>ZHEJIANG</span>
+      <span>HANGZHOU</span>
+    </div>
+  </vue-modal>
 </template>
 
 <script>
@@ -23,5 +27,4 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-
 </style>

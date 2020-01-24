@@ -6,7 +6,7 @@
           <span class = 'blog-menu-time'>{{$dateFormat(currentArticle.created_at,'yyyy-MM-dd hh:mm')}}</span>
           <Labels :labels='currentArticle.labels'/>
           <div class='view' v-if="currentArticle.body" v-html='currentArticle.body' />
-          <Comments :currentArticle= 'currentArticle'/>
+          <Comments @changeVisible='changeVisible' :currentArticle= 'currentArticle'/>
         </div>
       </div>
 </template>
@@ -33,7 +33,12 @@ export default {
 
     }
   },
-  methods: { }
+  methods: {
+    changeVisible () {
+      // 向blog传递
+      this.$emit('changeVisible')
+    }
+  }
 }
 </script>
 

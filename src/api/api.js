@@ -63,11 +63,47 @@ export function upSupApi (data) {
   }
   return request(config)
 }
-
+// 博客内容
 export function getBlogListApi () {
   const config = {
     url: '/b/showBlog',
     method: 'get'
+  }
+  return request(config)
+}
+
+export function upNumApi (data) {
+  const config = {
+    url: '/b/updateUpNum',
+    method: 'post',
+    data
+  }
+  return request(config)
+}
+
+export function likeNumApi (data) {
+  const config = {
+    url: '/b/updateLikeNum',
+    method: 'post',
+    data
+  }
+  return request(config)
+}
+// 评论内容
+export function getCmtListApi (params) {
+  const config = {
+    url: '/c/showCmt',
+    method: 'get',
+    params
+  }
+  return request(config)
+}
+
+export function postCommentApi (data) {
+  const config = {
+    url: '/c/saveCmt',
+    method: 'post',
+    data
   }
   return request(config)
 }
