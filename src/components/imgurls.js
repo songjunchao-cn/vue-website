@@ -24,7 +24,7 @@ import reacts from '../assets/images/react.png'
 
 // about
 import imail from '../assets/images/mymail.png'
-import igit from '../assets/images/mygit.png'
+import iphone from '../assets/images/phone.png'
 import icode from '../assets/images/mycode.png'
 import iadd from '../assets/images/myadd.png'
 import icity from '../assets/images/citybg.png'
@@ -78,7 +78,7 @@ const homeImg = {
 
 const aboutImg = {
   imail,
-  igit,
+  iphone,
   icode,
   iadd,
   icity,

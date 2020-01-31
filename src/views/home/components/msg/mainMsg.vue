@@ -4,15 +4,12 @@
       <strong>{{$attrs.msgItem.name}}</strong>
       <span>{{timeData}}</span>
       <span @click="upSup" class="msgLight">
-        <!-- icon -->
         <a></a>
         {{supData}}
       </span>
     </article>
     <section class="message">{{$attrs.msgItem.msg}}</section>
-    <!-- <span class="bubble"></span> -->
     <Bubble v-for="item in bubbles" :key="item.time" :bubbleItem="item" :bubbles.sync="bubbles" />
-    <!-- {this.state.bubbles.map(bubble => <Bubble key={bubble.time} pro={bubble} out={this.outBubble.bind(this)}/>)} -->
   </li>
 </template>
 

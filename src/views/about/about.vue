@@ -93,7 +93,7 @@ export default {
           type: 'about'
         },
         show: true,
-        img: aboutImg.igit
+        img: aboutImg.iphone
       },
       wechatConfig: {
         modelConfig: {
@@ -115,7 +115,7 @@ export default {
       },
       linkConfig: {
         modelConfig: {
-          title: 'Where',
+          title: 'Link',
           style: 'pink',
           type: 'about'
         },
