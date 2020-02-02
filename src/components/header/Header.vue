@@ -5,13 +5,17 @@
         <span>
           <img :src="$imgUrls.homeImg.logo" alt />
         </span>
-        <a :class="{'nav-index': item.name === tabName}"
-           v-for="item in nav"
-           :key="item.herf"
-           @click="changeTab(item.herf)"
+        <a
+          :class="{'nav-index': item.name === tabName}"
+          v-for="item in nav"
+          :key="item.herf"
+          @click="changeTab(item.herf)"
         >{{item.text}}</a>
       </nav>
       <div class="times">
+        <div class="container">
+          <div class="sunny"></div>
+        </div>
         <a target="_blank" href="https://github.com/songjunchao-cn">
           <!-- <img :src="$imgUrls.homeImg.git" alt /> -->
         </a>
@@ -35,8 +39,8 @@ export default {
       time: new Date()
     }
   },
-  created () {},
-  beforeMount () {},
+  created () { },
+  beforeMount () { },
   mounted () {
     setInterval(this.getTimeNow, 1000)
   },
@@ -66,4 +70,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 </style>

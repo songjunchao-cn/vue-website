@@ -17,13 +17,13 @@
     &-content {
       overflow-y: auto;
       box-sizing: border-box;
-      padding: 12px;
+      padding: 5px;
       height: calc(100% - 40px);
-      // -webkit-overflow-scrolling: touch;
+      -webkit-overflow-scrolling: touch;
     }
     &-list {
       & > li {
-        padding: 12px;
+        padding: 4px;
         cursor: pointer;
       }
     }
@@ -150,5 +150,14 @@
   }
   code, a, h1, h2, h3, pre, p {
     font-family: $art_font;
+  }
+}
+@media screen and (max-width: 768px) {
+  .blog-menu-labels{
+    display: flex;
+    .blog-menu-label{
+      padding-right:10px;
+      margin: 0;
+    }
   }
 }

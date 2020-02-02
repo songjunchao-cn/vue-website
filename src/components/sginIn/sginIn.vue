@@ -5,8 +5,8 @@
     <p>{{nameInput?'净化荧屏，世界和平。请勿使用敏感词汇':'邮箱地址是您的唯一标示，认真点啊'}}</p>
     <div class="sginInput">
       <input type="text" :placeholder="nameInput?'请输入用户名':'请输入您的邮箱'" ref="inputer" />
-      <button v-if="!nameInput" :class="erro?'buttonAnimate':''" @click="getUser">OK1</button>
-      <button v-else :class="erro?'buttonAnimate':''" @click="saveUser">OK2</button>
+      <button v-if="!nameInput" :class="erro?'buttonAnimate':''" @click="getUser">OK</button>
+      <button v-else :class="erro?'buttonAnimate':''" @click="saveUser">OK</button>
     </div>
     <fade-transition animationName='bounce'>
       <div v-if="erro" class="erroText">{{erroText}}</div>

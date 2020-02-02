@@ -113,9 +113,9 @@
     position: absolute;
     width: 35px;
     height: 35px;
-    bottom: 1rem;
+    bottom: 3rem;
     right: 1rem;
-    background:url("http://cdn.toofook.com/my-blog/toLink.png") no-repeat center;
+    background:url("../../assets/images/call.png") no-repeat center;
   }
   .addImg{
     width: 100%;
@@ -315,6 +315,11 @@
     }
     .photo,.connect,.wechat,.mail{
       margin: .2rem;
+    }
+    .mail{
+      h3{
+        font-size: .6rem;
+      }
     }
     .add{
       height: 50vw;

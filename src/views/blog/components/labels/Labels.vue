@@ -1,8 +1,8 @@
 <template>
-  <span>
+  <span class="blog-menu-labels">
     <a
-      v-for="element in labels"
-      :key="element"
+      v-for="(element,index) in labels"
+      :key="index"
       :class="lableCss"
       :style="'color:'+`${tranColor(element)}`"
     >{{element}}</a>
@@ -19,6 +19,9 @@ export default {
         return []
       }
     }
+  },
+  mounted () {
+    console.log(this.labels, 'ss')
   },
   data () {
     return {

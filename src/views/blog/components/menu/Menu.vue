@@ -9,7 +9,7 @@
       >
         <h3 :class="titleCss">{{item.title}}</h3>
         <div>
-          <span :class="timeCss">{{$dateFormat(item.created_at,'yyyy-MM-dd hh:mm') }}</span>
+          <span :class="timeCss">{{$dateFormat(item.created_at,'yyyy/MM/dd') }}</span>
           <Labels :labels='item.labels'/>
         </div>
       </li>
