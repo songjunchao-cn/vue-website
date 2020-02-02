@@ -4,7 +4,7 @@
       <img :src="config.img" alt />
     </div>
     <h3>songjunchao.cn@gmail.com</h3>
-    <a href="songjunchao.cn@gmail.com" class="linkIcon"></a>
+    <a href="mailto:songjunchao.cn@gmail.com" class="linkIcon"></a>
   </vue-modal>
 </template>
 

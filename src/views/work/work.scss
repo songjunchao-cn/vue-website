@@ -71,16 +71,30 @@
       }
     }
   }
-  
+  .img-content{
+    padding: 35px;
+  }
+  .work-img{
+    width: 800px;
+  }
   
   @media screen and (max-width: 768px) {
     .figureBox>div{
       margin-right: 20px
     }
+    .work-img{
+      width: 480px;
+    }
   }
   @media screen and (max-width: 480px) {
     .figureBox>div{
       margin-right: 0
+    }
+    .work-img{
+      width: 330px;
+    }
+    .img-content{
+      padding: 5px;
     }
     .scroll{
       -webkit-overflow-scrolling: touch;

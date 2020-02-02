@@ -4,7 +4,7 @@
         <img :src='config.img' alt/>
       </div>
       <h3>13216127918</h3>
-      <a v-if="isPhone" href="13216127918" class='linkIcon'></a>
+      <a v-if="isPhone" href="tel://13216127918" class='linkIcon'></a>
    </vue-modal>
 </template>
 

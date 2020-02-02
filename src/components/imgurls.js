@@ -10,17 +10,26 @@ import msg from '../assets/images/msg.png'
 import setting from '../assets/images/setting.png'
 
 // work
+// work-logo
 import logo1 from '../assets/images/logo1.png'
 import logo2 from '../assets/images/logo2.png'
-import chick from '../assets/images/chicken.png'
-import moneky from '../assets/images/moneky.png'
-import game from '../assets/images/game.png'
-import jquo from '../assets/images/jquo.png'
-import pictring from '../assets/images/pictring.png'
-// import vue from '../assets/images/Vue.png'
-import reacts from '../assets/images/react.png'
-// import blog from '../assets/images/Vue.png'
-// blogs
+import logo3 from '../assets/images/logo3.png'
+import logo4 from '../assets/images/logo4.png'
+import blog from '../assets/images/blogs.png'
+import swLogo from '../assets/images/switchLogo.png'
+import modal from '../assets/images/modal.png'
+import circle from '../assets/images/circle.png'
+import api from '../assets/images/api.png'
+// work-content
+import state from '../assets/images/work/state.png'
+import paper from '../assets/images/work/paper.png'
+import activity from '../assets/images/work/activity.png'
+
+import blogc from '../assets/images/work/schema.png'
+import switchc from '../assets/images/work/switch.png'
+import modalc from '../assets/images/work/modal.png'
+import circlec from '../assets/images/work/circle.png'
+import apic from '../assets/images/work/api.png'
 
 // about
 import imail from '../assets/images/mymail.png'
@@ -92,16 +101,25 @@ const aboutImg = {
 }
 
 const workIcon = {
+  // logo
   logo1,
   logo2,
-  chick,
-  moneky,
-  game,
-  jquo,
-  pictring,
-  // vue,
-  reacts
-  // blog
+  logo3,
+  logo4,
+  blog,
+  swLogo,
+  modal,
+  circle,
+  api,
+  // content
+  state,
+  paper,
+  activity,
+  blogc,
+  switchc,
+  modalc,
+  circlec,
+  apic
 }
 
 let parrotUrl = {}

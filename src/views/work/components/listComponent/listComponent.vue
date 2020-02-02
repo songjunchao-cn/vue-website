@@ -22,8 +22,9 @@ export default {
     console.log(this.$attrs, 'attrs')
   },
   methods: {
-    clickIcon () {
-
+    clickIcon (item) {
+      console.log(item, 'clickIcon')
+      this.$emit('changeVisiable', item)
     }
   }
 }

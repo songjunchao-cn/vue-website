@@ -1,15 +1,20 @@
 <template>
   <main class="scroll">
     <div style="height:'auto';padding-bottom:'6rem'" class="app-center">
-      <ListComponent title="Work" :figures="workFigure" />
-      <ListComponent title="Code" :figures="codeFigure" />
-      <div @click="toAbout" class="more">
+      <ListComponent @changeVisiable ='changeVisiable' title="Work" :figures="workFigure" />
+      <ListComponent @changeVisiable ='changeVisiable' title="Code" :figures="codeFigure" />
+      <div class="more">
         <span class="moreIcon">
           <i></i>
         </span>
          <a @click="$router.push('about')">VIEW MORE</a>
       </div>
     </div>
+     <vue-modal v-for="item in [...workFigure,...codeFigure]" :key="item.src" v-model="item.isShow" :config="item">
+       <div class="img-content">
+        <img class="work-img" :src="item.content" alt="">
+       </div>
+    </vue-modal>
     <router-switch status="enter" @callback="switchOut" v-if="switchIn"></router-switch>
   </main>
 </template>
@@ -27,18 +32,77 @@ export default {
   data () {
     return {
       workFigure: [
-        { src: workIcon.logo1, text: '优品养车logo', isShow: false, type: 'white' },
-        { src: workIcon.logo2, text: '优品养车logo', isShow: false, type: 'white' },
-        { src: workIcon.chick, text: '老思鸡H5', isShow: false, type: 'white' },
-        { src: workIcon.moneky, text: '校招H5', isShow: false, type: 'white' }
+        {
+          src: workIcon.logo1,
+          text: '国家质量监督平台',
+          isShow: false,
+          style: 'white',
+          type: 'center',
+          content: workIcon.state
+        },
+        {
+          src: workIcon.logo2,
+          text: '论文送审系统',
+          isShow: false,
+          style: 'white',
+          type: 'center',
+          content: workIcon.paper
+        },
+        {
+          src: workIcon.logo3,
+          text: '浙大活动室',
+          isShow: false,
+          style: 'white',
+          type: 'center',
+          content: workIcon.activity
+        },
+        {
+          src: workIcon.logo4,
+          text: '计量系统',
+          isShow: false,
+          style: 'white',
+          type: 'center',
+          content: workIcon.state
+        }
       ],
       codeFigure: [
-        { src: workIcon.game, text: '五子棋', isShow: false, type: 'white' },
-        { src: workIcon.jquo, text: 'jQuo', isShow: false, type: 'white' },
-        { src: workIcon.pictring, text: 'pictring', isShow: false, type: 'white' },
-        { src: workIcon.chick, text: '老思鸡H5', isShow: false, type: 'white' },
-        { src: workIcon.vue, text: 'vue-pictring', isShow: false, type: 'white' },
-        { src: workIcon.blog, text: 'My Blog', isShow: false, type: 'white' }
+        {
+          src: workIcon.blog,
+          text: 'Schema',
+          isShow: false,
+          style: 'white',
+          type: 'center',
+          content: workIcon.blogc
+        },
+        { src: workIcon.swLogo,
+          text: 'Switch',
+          isShow: false,
+          style: 'white',
+          type: 'center',
+          content: workIcon.switchc
+        },
+        { src: workIcon.modal,
+          text: 'Modal',
+          isShow: false,
+          style: 'white',
+          type: 'center',
+          content: workIcon.modalc
+        },
+        { src: workIcon.circle,
+          text: 'Circle',
+          isShow: false,
+          style: 'white',
+          type: 'center',
+          content: workIcon.circlec
+        },
+        {
+          src: workIcon.api,
+          text: 'Api',
+          isShow: false,
+          style: 'white',
+          type: 'center',
+          content: workIcon.apic
+        }
       ],
       switchIn: false
     }
@@ -49,8 +113,9 @@ export default {
     }, 820)
   },
   methods: {
-    toAbout () {
-
+    changeVisiable (item) {
+      console.log(item)
+      item.isShow = !item.isShow
     },
     switchOut (n) {
       this.switchIn = n

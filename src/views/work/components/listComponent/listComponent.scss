@@ -9,9 +9,10 @@
       flex-direction:row;
       flex-wrap:wrap;
       margin-top: 16px;
-      & > div{
-        margin-right: 60px
-      }
+      justify-content: space-between;
+      // & > div{
+      //   margin-right: 60px
+      // }
     }
     &>span{
       font-size:1.8rem;

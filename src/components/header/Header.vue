@@ -13,7 +13,7 @@
       </nav>
       <div class="times">
         <a target="_blank" href="https://github.com/songjunchao-cn">
-          <img :src="$imgUrls.homeImg.git" alt />
+          <!-- <img :src="$imgUrls.homeImg.git" alt /> -->
         </a>
         <time>{{formatTime}}</time>
       </div>

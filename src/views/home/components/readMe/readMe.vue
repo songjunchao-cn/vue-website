@@ -14,30 +14,38 @@
         <hr align="center" width="60%" style="margin:18px auto" color="#b99f51" size="1" />
       </li>
       <li>
-        <em v-if="user.emai">{{user.emai}}</em>
-        <a v-else @click="login">尚未登陆</a>
+        <em v-if="userObj.email">{{userObj.email}}</em>
+        <a v-else @click="toggleShow">尚未登陆</a>
       </li>
-      <li>
-        <em>{{user.name}}</em>
-      </li>
+      <vue-modal :config='sginInConfig' v-model="sginInVisable">
+        <sgin-in></sgin-in>
+      </vue-modal>
     </ul>
 </template>
 
 <script>
+import sginIn from '@/components/sginIn/sginIn'
 export default {
   name: 'readMe',
+  components: {
+    sginIn
+  },
   data () {
     return {
-      user: {
-        name: 'sjc'
-      }
+      sginInConfig: {
+        title: '登录',
+        style: 'white',
+        type: 'center'
+      },
+      sginInVisable: false
     }
   },
   mounted () {
+    this.$store.commit('initUser')
   },
   methods: {
-    login () {
-
+    toggleShow () {
+      this.sginInVisable = true
     }
   },
   watch: {
@@ -48,11 +56,19 @@ export default {
     readMeVisible (val) {
       // 向上home传递
       this.$emit('input', val)
+    },
+    'userObj.email': {
+      handler: function (val) {
+        if (val) this.sginInVisable = false
+      }
     }
   },
   computed: {
     homeImg () {
       return this.$imgUrls.homeImg
+    },
+    userObj () {
+      return this.$store.state.userObj || {}
     }
   }
 }

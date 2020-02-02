@@ -10,7 +10,6 @@
     </div>
     <span v-if="!userObj.email" @click="toggleShow" class="putButton">留言</span>
     <div class="msgInput" v-else>
-      <!-- onMouseDown={e => e.stopPropagation()} className={Css.msgInput} -->
       <input v-model="message" ref="msgInput" placeholder="净化荧屏，世界和平" type="text" />
       <span class="msgButton" @click="saveMsg">留言</span>
     </div>

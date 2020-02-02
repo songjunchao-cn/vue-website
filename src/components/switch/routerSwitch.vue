@@ -48,14 +48,14 @@ export default {
         this.$emit('callback', false)
       }, 1000)
     },
-    // 洗牌
+    // 随机取方块
     shuffle (n) {
-      // 生成m张牌
+      // 生成m个方块
       let arr = new Array(n)
       for (let i = 0; i < n; i++) {
         arr[i] = i
       }
-      // 每次抽出一张牌，放在另一堆。因为要在数组里抽出元素，把后面的所有元素向前拉一位，所以很耗时。
+      // 每次抽出一个方块，放在另一堆。因为要在数组里抽出元素，把后面的所有元素向前拉一位，所以很耗时。
       let newArr = []
       for (let i = n; i > 0; i--) {
         var length = Math.floor(Math.random() * i)
