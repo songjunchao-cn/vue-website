@@ -1,3 +1,4 @@
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
 module.exports = {
 //   // 部署应用时的基本 URL
 // //   publicPath: process.env.NODE_ENV === 'production' ? '192.168.60.110:8080' : '192.168.60.110:8080',
@@ -106,6 +107,19 @@ module.exports = {
   //   // 向 PWA 插件传递选项
   //   pwa: {},
 
-//   // 可以用来传递任何第三方插件选项
-//   pluginOptions: {}
+  //   // 可以用来传递任何第三方插件选项
+  //   pluginOptions: {}
+  configureWebpack: config => {
+  // 开发环境不需要gzip
+    if (process.env.NODE_ENV !== 'production') return
+    config.plugins.push(
+      new CompressionWebpackPlugin({
+      // 正在匹配需要压缩的文件后缀
+        test: /\.(js|css|svg|woff|ttf|json|html)$/,
+        // 大于10kb的会压缩
+        threshold: 10240
+      // 其余配置查看compression-webpack-plugin
+      })
+    )
+  }
 }
