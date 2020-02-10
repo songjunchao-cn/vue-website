@@ -115,9 +115,9 @@ module.exports = {
     config.plugins.push(
       new CompressionWebpackPlugin({
       // 正在匹配需要压缩的文件后缀
-        test: /\.(js|css|svg|woff|ttf|json|html)$/,
+        test: /\.(js|css|svg|woff|woff2|ttf|png|ico|json|html)$/,
         // 大于10kb的会压缩
-        threshold: 10240
+        threshold: 1024
       // 其余配置查看compression-webpack-plugin
       })
     )

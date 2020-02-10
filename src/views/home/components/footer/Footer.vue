@@ -6,14 +6,16 @@
         {{dateValue}}
       </li>
       <li>
-        <b>const</b> UseTime = 4s
+        <b>const</b>
+        {{weatherValue}}
       </li>
       <li>
-        <b>const</b> Add=浙江省杭州市
+        <b>const</b>
+        {{addrValue}}
       </li>
-      <li>WWW.SJC.TOP</li>
+      <li>SONGJUNCHAO-CN.CN</li>
       <li>
-        <a target="_blank" href>备案号1111111</a>
+        <a target="_blank" href>吉ICP备20000493号</a>
       </li>
     </ul>
   </footer>
@@ -26,17 +28,29 @@ export default {
   data () {
     return {
       dateValue: ' Date = ' + new Date().getFullYear() + '/' + (+new Date().getMonth() + 1) + '/' + new Date().getDate(),
+      weatherValue: '',
       userTime: 1
     }
   },
   mounted () {
     this.initUserTime()
+    this.crosIpApi()
   },
   methods: {
     initUserTime () {
       setInterval(() => {
         this.userTime++
       }, 1000)
+    },
+    async initWeather (ip) {
+      let { data } = await this.$api.crosWheatherApi(ip)
+      this.weatherData = data.HeWeather6[0]
+      this.weatherValue = 'Weather = ' + this.weatherData.now.cond_txt
+      this.addrValue = 'Add= ' + this.weatherData.basic.admin_area + this.weatherData.basic.location
+    },
+    async crosIpApi () {
+      let { data } = await this.$api.crosIpApi()
+      this.initWeather(data.query)
     }
   }
 }

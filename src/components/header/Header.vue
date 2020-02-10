@@ -16,9 +16,9 @@
         <div class="container">
           <div class="sunny"></div>
         </div>
-        <a target="_blank" href="https://github.com/songjunchao-cn">
-          <!-- <img :src="$imgUrls.homeImg.git" alt /> -->
-        </a>
+        <!-- <a target="_blank" href="https://github.com/songjunchao-cn">
+          <img :src="$imgUrls.homeImg.git" alt />
+        </a> -->
         <time>{{formatTime}}</time>
       </div>
     </div>

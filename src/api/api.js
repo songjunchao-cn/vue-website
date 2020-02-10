@@ -108,9 +108,16 @@ export function postCommentApi (data) {
   return request(config)
 }
 // 跨域外链
-// export function crosArticleApi () {
-//   const config = {
-//     url: 'https://api.github.com/issues'
-//   }
-//   return request(config)
-// }
+export function crosWheatherApi (ip) {
+  const config = {
+    url: `https://free-api.heweather.net/s6/weather/now?location=${ip}&key=4a77da0ef2be494e9e0e4b4a34ce0970`
+  }
+  return request(config)
+}
+
+export function crosIpApi () {
+  const config = {
+    url: 'http://ip-api.com/json/?fields=520191&lang=zh-CN'
+  }
+  return request(config)
+}

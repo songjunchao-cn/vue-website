@@ -92,7 +92,7 @@ body {
   header {
     width: 100%;
     background-color: #fff;
-    border-bottom: $b_border;
+    // border-bottom: $b_border;
     height: 36px;
 
     nav {
@@ -126,17 +126,18 @@ body {
         line-height: 38px;
       }
       .container {
-        width: 38px;
-        height: 38px;
+        width: 36px;
+        height: 36px;
         display: inline-block;
         position: relative;
         background: #4456a7;
+        border-radius: 50%;
         .sunny {
           width: 20px;
           height: 20px;
           position: absolute;
-          top: 19px;
-          left: 19px;
+          top: 18px;
+          left: 18px;
           margin-left: -10px;
           margin-top: -10px;
           background: #ffee44;
@@ -156,24 +157,24 @@ body {
         .sunny::before{
           content: '';
           width: 6px;
-          height: 38px;
+          height: 36px;
           position: absolute;
           top: 10px;
           left: 10px;
           margin-left: -3px;
-          margin-top: -19px;
+          margin-top: -18px;
           background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
           transform: rotate(90deg)
       }
       .sunny::after{
          content: '';
-         width: 6px;
-          height: 38px;
+          width: 6px;
+          height: 36px;
           position: absolute;
           top: 10px;
           left: 10px;
           margin-left: -3px;
-          margin-top: -19px;
+          margin-top: -18px;
           background: -webkit-linear-gradient(
             top,
             rgba(255, 255, 255, 0) 0%,
