@@ -1,7 +1,7 @@
 <!--
  * @Author: sjc
  * @Date: 2020-02-24 09:51:07
- * @LastEditTime: 2020-02-24 10:06:36
+ * @LastEditTime: 2020-02-24 10:31:40
  * @Description:chat
  -->
 <template>
@@ -29,7 +29,7 @@ export default {
         video: true,
         audio: true
       }
-      let stream = navigator.mediaDevices.getUserMedia(constraints)
+      let stream = await navigator.mediaDevices.getUserMedia(constraints)
       console.log(stream)
       this.$refs.player.srcObject = stream
     }
