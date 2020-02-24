@@ -34,7 +34,8 @@ export default {
         { indent: true, name: 'home', text: 'HOME', herf: '/home' },
         { indent: false, name: 'blog', text: 'BLOG', herf: '/blog' },
         { indent: false, name: 'work', text: 'WORK', herf: '/work' },
-        { indent: false, name: 'about', text: 'ABOUT', herf: 'about' }
+        { indent: false, name: 'chat', text: 'CHAT', herf: '/chat' },
+        { indent: false, name: 'about', text: 'ABOUT', herf: '/about' }
       ],
       time: new Date()
     }

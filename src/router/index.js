@@ -4,6 +4,7 @@ const Root = () => import('../views/root/root')
 const Home = () => import('../views/home/home')
 const Blog = () => import('../views/blog/blog')
 const Work = () => import('../views/work/work')
+const Chat = () => import('../views/chat/chat')
 const About = () => import('../views/about/about')
 const notFind = () => import('../components/404/notFind')
 
@@ -30,6 +31,11 @@ const routes = [
         path: '/work',
         component: Work,
         name: 'work'
+      },
+      {
+        path: '/chat',
+        component: Chat,
+        name: 'chat'
       },
       {
         path: '/about',
