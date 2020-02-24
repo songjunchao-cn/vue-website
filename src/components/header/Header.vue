@@ -19,13 +19,14 @@
         <!-- <a target="_blank" href="https://github.com/songjunchao-cn">
           <img :src="$imgUrls.homeImg.git" alt />
         </a> -->
-        <time>{{formatTime}}</time>
+        <time v-if="!isPhone">{{formatTime}}</time>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import isPhone from '@/utils/isPhone'
 export default {
   name: 'top-header',
   data () {
@@ -37,7 +38,8 @@ export default {
         { indent: false, name: 'chat', text: 'CHAT', herf: '/chat' },
         { indent: false, name: 'about', text: 'ABOUT', herf: '/about' }
       ],
-      time: new Date()
+      time: new Date(),
+      isPhone: isPhone
     }
   },
   created () { },
