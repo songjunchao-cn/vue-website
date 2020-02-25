@@ -1,7 +1,7 @@
 <!--
  * @Author: sjc
  * @Date: 2020-02-24 09:51:07
- * @LastEditTime: 2020-02-25 11:29:30
+ * @LastEditTime: 2020-02-25 12:17:09
  * @Description:chat
  -->
 <template>
@@ -65,9 +65,12 @@ export default {
       }
     },
     recPlay () {
-      this.mediaRecorder.stop()
+      if (this.mediaRecorder) {
+        this.mediaRecorder.stop()
+      }
       var blob = new Blob(this.buffer, { type: 'video/webm' })
       let recplayer = this.$refs.recplayer
+      recplayer.src = null
       recplayer.src = window.URL.createObjectURL(blob)
       recplayer.srcObject = null
     }

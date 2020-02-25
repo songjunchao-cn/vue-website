@@ -1,5 +1,7 @@
 .chat{
     overflow: auto;
+    height: 100%;
+    position: relative;
 }
 .video-wrap{
     // width: 100%;
@@ -12,8 +14,13 @@
     display: flex;
     justify-content: center;
     align-content: space-around;
+    height: 30px;
+    position: absolute;
+    right: 50px;
+    top: 50px;
     button{
         cursor:pointer;
-        margin: 20px;
+        height: 30px;
+        margin-left: 20px;
     }
 }
