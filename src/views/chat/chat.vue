@@ -1,14 +1,20 @@
 <!--
  * @Author: sjc
  * @Date: 2020-02-24 09:51:07
- * @LastEditTime: 2020-02-24 12:17:22
+ * @LastEditTime: 2020-02-25 11:29:30
  * @Description:chat
  -->
 <template>
-  <div>
-      <div>正在开发中，此页面为webrtc测试页面</div>
-      <video ref="player" id="player" autoplay></video>
+  <div class="chat">
+    <div>正在开发中，此页面为webrtc测试页面</div>
+    <div class="video-wrap">
+      <video ref="player" id="player" autoplay controls playsinline></video>
+      <video v-show="buffer.length>0" ref="recplayer" id="recplayer" controls autoplay></video>
+    </div>
+    <div class="btn-wrap">
       <button @click="startRecord">录屏</button>
+      <button id="recplay" @click="recPlay">播放录屏</button>
+    </div>
   </div>
 </template>
 
@@ -17,6 +23,9 @@ export default {
   name: 'chat',
   data () {
     return {
+      buffer: [],
+      stream: null,
+      mediaRecorder: null
     }
   },
   mounted () {
@@ -30,11 +39,12 @@ export default {
         video: true,
         audio: true
       }
-      let stream = await navigator.mediaDevices.getUserMedia(constraints)
-      this.$refs.player.srcObject = stream
+      this.stream = await navigator.mediaDevices.getUserMedia(constraints)
+      this.$refs.player.srcObject = this.stream
+      this.$refs.player.muted = true
     },
     startRecord () {
-      let buffer = []
+      this.buffer = []
       var options = {
         mimeType: 'video/webm;codecs=vp8'
       }
@@ -44,20 +54,27 @@ export default {
         return
       }
       try {
-        let mediaRecorder = new MediaRecorder(window.stream, options)
-        mediaRecorder.ondataavailable = handleDataAvailable
-        mediaRecorder.start(10)
+        this.mediaRecorder = new MediaRecorder(this.stream, options)
+        this.mediaRecorder.ondataavailable = e => {
+          console.log(this.buffer)
+          if (e && e.data && e.data.size > 0) { this.buffer.push(e.data) }
+        }
+        this.mediaRecorder.start(1000)
       } catch (e) {
         console.error('Failed to create MediaRecorder:', e)
       }
-      function handleDataAvailable (e) {
-        if (e && e.data && e.data.size > 0) { buffer.push(e.data) }
-      }
+    },
+    recPlay () {
+      this.mediaRecorder.stop()
+      var blob = new Blob(this.buffer, { type: 'video/webm' })
+      let recplayer = this.$refs.recplayer
+      recplayer.src = window.URL.createObjectURL(blob)
+      recplayer.srcObject = null
     }
   }
 }
 </script>
 
 <style lang='scss' scoped>
-
+@import './chat.scss'
 </style>

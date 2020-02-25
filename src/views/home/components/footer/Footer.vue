@@ -1,3 +1,9 @@
+<!--
+ * @Author: sjc
+ * @Date: 2019-11-04 16:32:43
+ * @LastEditTime: 2020-02-24 12:47:18
+ * @Description:
+ -->
 <template>
   <footer class="footer">
     <ul>
@@ -46,11 +52,15 @@ export default {
       let { data } = await this.$api.crosWheatherApi(ip)
       this.weatherData = data.HeWeather6[0]
       this.weatherValue = 'Weather = ' + this.weatherData.now.cond_txt
-      this.addrValue = 'Add= ' + this.weatherData.basic.admin_area + this.weatherData.basic.location
+      let city = this.weatherData.basic.admin_area + this.weatherData.basic.location
+      if (this.weatherData.basic.admin_area === this.weatherData.basic.location) {
+        city = this.weatherData.basic.admin_area
+      }
+      this.addrValue = 'Add= ' + city
     },
     async crosIpApi () {
       let { data } = await this.$api.crosIpApi()
-      this.initWeather(data.query)
+      this.initWeather(data.ip)
     }
   }
 }

@@ -117,7 +117,7 @@ export function crosWheatherApi (ip) {
 
 export function crosIpApi () {
   const config = {
-    url: 'http://ip-api.com/json/?fields=520191&lang=zh-CN'
+    url: 'https://api.ipify.org/?format=json'
   }
   return request(config)
 }

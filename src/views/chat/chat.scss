@@ -1,0 +1,18 @@
+.chat{
+    overflow: auto;
+}
+.video-wrap{
+    // width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+.btn-wrap{
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    button{
+        margin: 20px;
+    }
+}
